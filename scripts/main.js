@@ -305,12 +305,21 @@ class ScrollAnimations {
       rootMargin: '0px 0px -50px 0px'
     };
     
+    this.parallaxElements = [];
+    this.isScrolling = false;
+    this.lastScrollTop = 0;
+    
     this.init();
   }
   
   init() {
     this.createScrollProgressBar();
+    this.createCircularProgress();
     this.initIntersectionObserver();
+    this.initParallaxElements();
+    this.initSmoothScrolling();
+    this.initMicroInteractions();
+    this.addNavigationActiveStates();
   }
   
   createScrollProgressBar() {
@@ -318,40 +327,333 @@ class ScrollAnimations {
     progressBar.className = 'scroll-progress';
     document.body.appendChild(progressBar);
     
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', Utils.throttle(() => {
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const scrolled = (winScroll / height) * 100;
       progressBar.style.width = scrolled + '%';
-    });
+      
+      // Update circular progress
+      this.updateCircularProgress(scrolled);
+    }, 16));
+  }
+  
+  createCircularProgress() {
+    const circularProgress = document.createElement('div');
+    circularProgress.className = 'scroll-progress-circle';
+    circularProgress.innerHTML = `
+      <svg>
+        <circle class="progress-circle" cx="30" cy="30" r="28"></circle>
+      </svg>
+    `;
+    document.body.appendChild(circularProgress);
+    
+    this.circularProgressEl = circularProgress.querySelector('.progress-circle');
+  }
+  
+  updateCircularProgress(percentage) {
+    if (this.circularProgressEl) {
+      const circumference = 2 * Math.PI * 28; // radius = 28
+      const offset = circumference - (percentage / 100) * circumference;
+      this.circularProgressEl.style.strokeDashoffset = offset;
+    }
   }
   
   initIntersectionObserver() {
     if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-          }
-        });
-      }, this.observerOptions);
-      
-      // Observe elements with reveal class
-      const revealElements = document.querySelectorAll('.reveal');
-      revealElements.forEach(el => observer.observe(el));
-      
-      // Add reveal class to sections and cards
-      const animatedElements = document.querySelectorAll(
-        '.section__title, .section__subtitle, .project-card, .skill-category'
-      );
-      
-      animatedElements.forEach((el, index) => {
-        el.classList.add('reveal');
-        if (index > 0) {
-          el.classList.add(`reveal-delay-${Math.min(index, 5)}`);
+      // Different observers for different animation types
+      this.createRevealObserver();
+      this.createStaggerObserver();
+      this.createSkillsObserver();
+    }
+  }
+  
+  createRevealObserver() {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          
+          // Add micro-interaction classes based on element type
+          this.addMicroInteractionClasses(entry.target);
         }
-        observer.observe(el);
       });
+    }, this.observerOptions);
+    
+    // Different reveal animations for different elements
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealLeftElements = document.querySelectorAll('.about__text, .contact__info');
+    const revealRightElements = document.querySelectorAll('.about__image, .hero__visual');
+    const revealScaleElements = document.querySelectorAll('.project-card');
+    
+    revealElements.forEach(el => {
+      revealObserver.observe(el);
+    });
+    
+    revealLeftElements.forEach(el => {
+      el.classList.add('reveal-left');
+      revealObserver.observe(el);
+    });
+    
+    revealRightElements.forEach(el => {
+      el.classList.add('reveal-right');
+      revealObserver.observe(el);
+    });
+    
+    revealScaleElements.forEach(el => {
+      el.classList.add('reveal-scale', 'card-tilt');
+      revealObserver.observe(el);
+    });
+    
+    // Add reveal class to sections and cards
+    const animatedElements = document.querySelectorAll(
+      '.section__title, .section__subtitle'
+    );
+    
+    animatedElements.forEach((el, index) => {
+      el.classList.add('reveal');
+      if (index > 0) {
+        el.classList.add(`reveal-delay-${Math.min(index, 5)}`);
+      }
+      revealObserver.observe(el);
+    });
+  }
+  
+  createStaggerObserver() {
+    const staggerObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const staggerItems = entry.target.querySelectorAll('.stagger-item');
+          staggerItems.forEach(item => {
+            item.classList.add('is-visible');
+          });
+        }
+      });
+    }, this.observerOptions);
+    
+    // Apply stagger animation to skill items and project cards
+    const skillCategories = document.querySelectorAll('.skill-category');
+    skillCategories.forEach(category => {
+      const skillItems = category.querySelectorAll('.skill-item');
+      skillItems.forEach(item => item.classList.add('stagger-item'));
+      staggerObserver.observe(category);
+    });
+    
+    const projectsGrid = document.querySelector('.projects__grid');
+    if (projectsGrid) {
+      const projectCards = projectsGrid.querySelectorAll('.project-card');
+      projectCards.forEach(card => card.classList.add('stagger-item'));
+      staggerObserver.observe(projectsGrid);
+    }
+  }
+  
+  createSkillsObserver() {
+    const skillsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.animateSkillBars(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    const skillCategories = document.querySelectorAll('.skill-category');
+    skillCategories.forEach(category => skillsObserver.observe(category));
+  }
+  
+  animateSkillBars(category) {
+    const skillItems = category.querySelectorAll('.skill-item[data-proficiency]');
+    skillItems.forEach((item, index) => {
+      setTimeout(() => {
+        const proficiency = item.dataset.proficiency;
+        if (proficiency) {
+          // Create progress bar if it doesn't exist
+          let progressBar = item.querySelector('.progress-bar');
+          if (!progressBar) {
+            progressBar = document.createElement('div');
+            progressBar.className = 'progress-bar';
+            progressBar.style.setProperty('--progress-width', `${proficiency}%`);
+            item.appendChild(progressBar);
+          }
+        }
+      }, index * 100);
+    });
+  }
+  
+  initParallaxElements() {
+    // Add parallax classes to elements
+    const heroVisual = document.querySelector('.hero__visual');
+    if (heroVisual) {
+      heroVisual.classList.add('parallax-slow');
+      this.parallaxElements.push({ element: heroVisual, speed: 0.5 });
+    }
+    
+    const projectCards = document.querySelectorAll('.project-card__image');
+    projectCards.forEach(card => {
+      card.classList.add('parallax-medium');
+      this.parallaxElements.push({ element: card, speed: 0.2 });
+    });
+    
+    // Setup parallax scroll listener
+    if (this.parallaxElements.length > 0) {
+      this.initParallaxScroll();
+    }
+  }
+  
+  initParallaxScroll() {
+    let ticking = false;
+    
+    const updateParallax = () => {
+      const scrollTop = window.pageYOffset;
+      
+      this.parallaxElements.forEach(({ element, speed }) => {
+        const rect = element.getBoundingClientRect();
+        const elementTop = rect.top + scrollTop;
+        const elementHeight = rect.height;
+        const windowHeight = window.innerHeight;
+        
+        // Only apply parallax when element is in viewport
+        if (rect.bottom >= 0 && rect.top <= windowHeight) {
+          const yPos = (scrollTop - elementTop) * speed;
+          element.style.transform = `translateY(${yPos}px)`;
+        }
+      });
+      
+      ticking = false;
+    };
+    
+    const requestParallaxUpdate = () => {
+      if (!ticking && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    };
+    
+    window.addEventListener('scroll', requestParallaxUpdate);
+  }
+  
+  initSmoothScrolling() {
+    // Enhanced smooth scrolling for navigation links
+    const navLinks = document.querySelectorAll('a[href^="#"]');
+    
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        const targetId = link.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          const offsetTop = targetElement.offsetTop - 80; // Account for fixed header
+          
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+          
+          // Update active navigation state
+          this.updateActiveNavigation(targetId);
+        }
+      });
+    });
+  }
+  
+  updateActiveNavigation(activeId) {
+    const navLinks = document.querySelectorAll('.nav__link');
+    navLinks.forEach(link => {
+      link.classList.remove('is-active');
+      if (link.getAttribute('href') === `#${activeId}`) {
+        link.classList.add('is-active');
+      }
+    });
+  }
+  
+  addNavigationActiveStates() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav__link');
+    
+    const observerOptions = {
+      threshold: 0.3,
+      rootMargin: '-80px 0px -50% 0px'
+    };
+    
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          this.updateActiveNavigation(sectionId);
+        }
+      });
+    }, observerOptions);
+    
+    sections.forEach(section => sectionObserver.observe(section));
+  }
+  
+  initMicroInteractions() {
+    // Add button press effects
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(btn => {
+      btn.classList.add('btn-press');
+      
+      // Add magnetic effect for large buttons
+      if (btn.classList.contains('btn--primary')) {
+        this.addMagneticEffect(btn);
+      }
+    });
+    
+    // Add link underline effects
+    const links = document.querySelectorAll('a:not(.btn):not(.nav__link)');
+    links.forEach(link => {
+      if (!link.querySelector('img')) { // Don't add to image links
+        link.classList.add('link-underline');
+      }
+    });
+    
+    // Add icon bounce effects
+    const icons = document.querySelectorAll('.social-link, .project-link');
+    icons.forEach(icon => icon.classList.add('icon-bounce'));
+    
+    // Add glow effects to cards
+    const cards = document.querySelectorAll('.project-card, .skill-category');
+    cards.forEach(card => card.classList.add('glow-effect'));
+  }
+  
+  addMagneticEffect(element) {
+    element.classList.add('btn-magnetic');
+    
+    element.addEventListener('mousemove', (e) => {
+      const rect = element.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      const distance = Math.sqrt(x * x + y * y);
+      const maxDistance = 50;
+      
+      if (distance < maxDistance) {
+        const factor = (maxDistance - distance) / maxDistance;
+        const translateX = x * factor * 0.3;
+        const translateY = y * factor * 0.3;
+        
+        element.style.transform = `translate(${translateX}px, ${translateY}px)`;
+      }
+    });
+    
+    element.addEventListener('mouseleave', () => {
+      element.style.transform = 'translate(0, 0)';
+    });
+  }
+  
+  addMicroInteractionClasses(element) {
+    // Add appropriate micro-interaction classes based on element type
+    if (element.classList.contains('project-card')) {
+      element.classList.add('card-tilt', 'hover-lift');
+    }
+    
+    if (element.classList.contains('skill-item')) {
+      element.classList.add('hover-scale');
+    }
+    
+    if (element.classList.contains('btn')) {
+      element.classList.add('btn-press');
     }
   }
 }
@@ -447,6 +749,9 @@ document.addEventListener('DOMContentLoaded', () => {
   new ContactForm();
   new ScrollAnimations();
   new PerformanceOptimizer();
+  
+  // Initialize content management system
+  window.contentManager = new ContentManager();
   
   // Add smooth reveal to hero section
   const heroElements = document.querySelectorAll('.hero__title, .hero__subtitle, .hero__description, .hero__actions');

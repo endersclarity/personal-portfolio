@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub API Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        .project-card { border: 1px solid #ccc; padding: 15px; margin: 10px 0; border-radius: 8px; }
+        .stats { background: #f5f5f5; padding: 5px; border-radius: 4px; display: inline-block; margin: 2px; }
+        .loading { color: #666; font-style: italic; }
+        .error { color: #d00; background: #fee; padding: 10px; border-radius: 4px; }
+        .success { color: #060; background: #efe; padding: 10px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>GitHub API Integration Test</h1>
+    
+    <div class="test-section">
+        <h2>GitHub API Status</h2>
+        <div id="api-status" class="loading">Testing API connection...</div>
+    </div>
+    
+    <div class="test-section">
+        <h2>User Profile</h2>
+        <div id="user-profile" class="loading">Loading user profile...</div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Featured Repositories</h2>
+        <div id="repositories" class="loading">Loading repositories...</div>
+    </div>
+    
+    <div class="test-section">
+        <h2>GitHub Stats</h2>
+        <div id="github-stats" class="loading">Loading statistics...</div>
+    </div>
+
+    <script src="scripts/github-api.js"></script>
+    <script>
+        async function testGitHubAPI() {
+            const apiStatusEl = document.getElementById('api-status');
+            const userProfileEl = document.getElementById('user-profile');
+            const repositoriesEl = document.getElementById('repositories');
+            const githubStatsEl = document.getElementById('github-stats');
+            
+            try {
+                // Initialize GitHub API
+                const github = new GitHubAPI('endersclarity');
+                
+                // Test 1: Check rate limit
+                apiStatusEl.innerHTML = '<div class="success">✅ GitHub API connected successfully</div>';
+                
+                // Test 2: Get user profile
+                try {
+                    const userProfile = await github.getUserProfile();
+                    userProfileEl.innerHTML = `
+                        <div class="success">
+                            <h3>${userProfile.name || userProfile.login}</h3>
+                            <p><strong>Bio:</strong> ${userProfile.bio || 'No bio available'}</p>
+                            <p><strong>Location:</strong> ${userProfile.location || 'Not specified'}</p>
+                            <p><strong>Public Repos:</strong> ${userProfile.public_repos}</p>
+                            <p><strong>Profile URL:</strong> <a href="${userProfile.html_url}" target="_blank">${userProfile.html_url}</a></p>
+                            ${userProfile.fallback ? '<p><em>⚠️ Using fallback data</em></p>' : '<p><em>✅ Live data from GitHub</em></p>'}
+                        </div>
+                    `;
+                } catch (error) {
+                    userProfileEl.innerHTML = `<div class="error">❌ Failed to load user profile: ${error.message}</div>`;
+                }
+                
+                // Test 3: Get repositories
+                try {
+                    const repos = await github.getRepositories({
+                        featured: ['personal-portfolio', 'task-manager-app', 'weather-dashboard'],
+                        exclude: ['config-files', 'learning-resources']
+                    });
+                    
+                    if (repos.length > 0) {
+                        repositoriesEl.innerHTML = `
+                            <div class="success">
+                                <p>✅ Found ${repos.length} repositories</p>
+                                ${repos.slice(0, 3).map(repo => `
+                                    <div class="project-card">
+                                        <h4>${repo.name}</h4>
+                                        <p>${repo.description || 'No description'}</p>
+                                        <p><strong>Language:</strong> ${repo.primary_language || repo.language || 'Not specified'}</p>
+                                        <div>
+                                            <span class="stats">⭐ ${repo.stargazers_count}</span>
+                                            <span class="stats">🍴 ${repo.forks_count}</span>
+                                            <span class="stats">📋 ${repo.open_issues_count}</span>
+                                        </div>
+                                        <p><strong>Updated:</strong> ${new Date(repo.updated_at).toLocaleDateString()}</p>
+                                        <p><strong>Topics:</strong> ${(repo.topics || []).join(', ') || 'None'}</p>
+                                        ${repo.enhanced ? '<p><em>✅ Enhanced with additional data</em></p>' : '<p><em>⚠️ Basic repository data</em></p>'}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `;
+                    } else {
+                        repositoriesEl.innerHTML = '<div class="error">❌ No repositories found</div>';
+                    }
+                } catch (error) {
+                    repositoriesEl.innerHTML = `<div class="error">❌ Failed to load repositories: ${error.message}</div>`;
+                }
+                
+                // Test 4: Get contribution stats
+                try {
+                    const stats = await github.getContributionStats();
+                    githubStatsEl.innerHTML = `
+                        <div class="success">
+                            <h3>GitHub Statistics</h3>
+                            <p><strong>Total Repositories:</strong> ${stats.totalRepos}</p>
+                            <p><strong>Total Stars:</strong> ${stats.totalStars}</p>
+                            <p><strong>Total Forks:</strong> ${stats.totalForks}</p>
+                            <p><strong>Languages Used:</strong> ${stats.languageCount}</p>
+                            <p><strong>Top Languages:</strong> ${stats.languages.slice(0, 5).join(', ')}</p>
+                            ${stats.fallback ? '<p><em>⚠️ Using fallback data</em></p>' : '<p><em>✅ Live statistics from GitHub</em></p>'}
+                        </div>
+                    `;
+                } catch (error) {
+                    githubStatsEl.innerHTML = `<div class="error">❌ Failed to load statistics: ${error.message}</div>`;
+                }
+                
+                // Test 5: Check cache status
+                console.log('GitHub API Cache Status:', github.getCacheStatus());
+                
+            } catch (error) {
+                apiStatusEl.innerHTML = `<div class="error">❌ GitHub API connection failed: ${error.message}</div>`;
+                console.error('GitHub API test failed:', error);
+            }
+        }
+        
+        // Run tests when page loads
+        document.addEventListener('DOMContentLoaded', testGitHubAPI);
+    </script>
+</body>
+</html>

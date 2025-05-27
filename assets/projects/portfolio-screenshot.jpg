@@ -1,0 +1,54 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="portfolioGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0.3" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#3b82f6" stroke-width="0.5" opacity="0.2"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="600" height="400" fill="#f8fafc"/>
+  <rect width="600" height="400" fill="url(#grid)"/>
+  
+  <!-- Browser chrome -->
+  <rect width="600" height="50" fill="#e2e8f0"/>
+  <circle cx="20" cy="25" r="6" fill="#ef4444"/>
+  <circle cx="40" cy="25" r="6" fill="#f59e0b"/>
+  <circle cx="60" cy="25" r="6" fill="#10b981"/>
+  <rect x="100" y="15" width="400" height="20" rx="10" fill="#f1f5f9"/>
+  
+  <!-- Content area -->
+  <rect x="20" y="70" width="560" height="310" fill="white" stroke="#3b82f6" stroke-width="1" opacity="0.5"/>
+  <rect x="20" y="70" width="560" height="60" fill="url(#portfolioGradient)"/>
+  
+  <!-- Header -->
+  <text x="300" y="105" font-family="Arial, sans-serif" font-size="24" font-weight="bold" 
+        text-anchor="middle" fill="#3b82f6">Personal Portfolio</text>
+  
+  <!-- Content blocks -->
+  <rect x="40" y="150" width="200" height="20" fill="#3b82f6" opacity="0.2" rx="4"/>
+  <rect x="40" y="180" width="150" height="15" fill="#3b82f6" opacity="0.1" rx="4"/>
+  <rect x="40" y="200" width="180" height="15" fill="#3b82f6" opacity="0.1" rx="4"/>
+  
+  <rect x="280" y="150" width="280" height="120" fill="#3b82f6" opacity="0.1" rx="8"/>
+  <text x="420" y="190" font-family="Arial, sans-serif" font-size="14" 
+        text-anchor="middle" fill="#3b82f6" opacity="0.7">Interactive Demo</text>
+  
+  <!-- Bottom section -->
+  <rect x="40" y="290" width="520" height="60" fill="#3b82f6" opacity="0.05" rx="8"/>
+  <circle cx="80" cy="320" r="15" fill="#3b82f6" opacity="0.3"/>
+  <circle cx="120" cy="320" r="15" fill="#3b82f6" opacity="0.2"/>
+  <circle cx="160" cy="320" r="15" fill="#3b82f6" opacity="0.1"/>
+  
+  <!-- Tech stack indicators -->
+  <rect x="450" y="300" width="60" height="20" fill="#3b82f6" opacity="0.2" rx="10"/>
+  <text x="480" y="313" font-family="Arial, sans-serif" font-size="10" 
+        text-anchor="middle" fill="#3b82f6">HTML</text>
+  
+  <rect x="450" y="325" width="60" height="20" fill="#06d6a0" opacity="0.2" rx="10"/>
+  <text x="480" y="338" font-family="Arial, sans-serif" font-size="10" 
+        text-anchor="middle" fill="#06d6a0">CSS</text>
+</svg>

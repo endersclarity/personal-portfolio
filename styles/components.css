@@ -672,3 +672,401 @@
     align-items: center;
   }
 }
+
+/* =============================================================================
+   THEME TOGGLE COMPONENTS
+   ============================================================================= */
+
+/* Theme toggle container */
+.theme-toggle-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-background);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  overflow: hidden;
+  color: var(--color-text-secondary);
+}
+
+.theme-toggle:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+  transform: scale(1.05);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Theme icon states */
+.theme-icon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.5) rotate(180deg);
+  transition: all var(--transition-slow);
+  color: inherit;
+}
+
+.theme-icon.active {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  color: var(--color-primary);
+}
+
+.theme-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2;
+}
+
+/* Theme transition effect for smooth color changes */
+html,
+body,
+* {
+  transition: 
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+/* Reduced motion override for theme transitions */
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle,
+  .theme-icon {
+    transition: none;
+  }
+  
+  html,
+  body,
+  * {
+    transition: none;
+  }
+}
+
+/* High contrast mode adjustments for theme toggle */
+@media (prefers-contrast: high) {
+  .theme-toggle {
+    border-width: 2px;
+  }
+  
+  .theme-toggle:focus-visible {
+    outline-width: 3px;
+  }
+}
+
+/* Mobile navigation adjustment for theme toggle */
+@media (max-width: 767px) {
+  .theme-toggle-container {
+    margin-left: var(--space-4);
+    margin-right: 0;
+  }
+}
+
+/* Desktop navigation adjustment for theme toggle */
+@media (min-width: 768px) {
+  .theme-toggle-container {
+    margin-left: var(--space-6);
+  }
+}
+
+/* =============================================================================
+   GITHUB INTEGRATION COMPONENTS
+   ============================================================================= */
+
+/* Loading state for projects */
+.projects-loading {
+  text-align: center;
+  padding: var(--space-12);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+}
+
+/* Enhanced project cards with GitHub data */
+.project-card--live {
+  position: relative;
+  border: 1px solid var(--color-primary-light);
+}
+
+.project-card--live::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-success));
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+/* Project card header with live indicator */
+.project-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.project-card__live-indicator {
+  font-size: 0.75rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* GitHub statistics overlay */
+.project-card__stats {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  display: flex;
+  gap: var(--space-2);
+  z-index: 2;
+}
+
+.stat-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: var(--space-1) var(--space-2);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: var(--color-white);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(4px);
+}
+
+/* Programming language indicator */
+.project-card__language {
+  margin-bottom: var(--space-3);
+}
+
+.language-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.language-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+}
+
+/* Repository topics */
+.project-card__topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.topic-tag {
+  padding: var(--space-1) var(--space-2);
+  background-color: var(--color-gray-100);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+/* Enhanced project links */
+.project-link--primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-lg);
+  font-weight: var(--font-weight-medium);
+  transition: all var(--transition-fast);
+}
+
+.project-link--primary:hover,
+.project-link--primary:focus {
+  background-color: var(--color-primary-dark);
+  color: var(--color-white);
+  transform: translateY(-1px);
+}
+
+.project-link--secondary {
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  font-weight: var(--font-weight-medium);
+  transition: all var(--transition-fast);
+}
+
+.project-link--secondary:hover,
+.project-link--secondary:focus {
+  background-color: var(--color-gray-50);
+  color: var(--color-text-primary);
+  border-color: var(--color-primary);
+}
+
+/* Project metadata */
+.project-card__meta {
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.project-meta__updated {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  font-style: italic;
+}
+
+/* Responsive adjustments for GitHub integration */
+@media (max-width: 768px) {
+  .project-card__stats {
+    position: static;
+    justify-content: flex-end;
+    margin-bottom: var(--space-3);
+    background: none;
+  }
+  
+  .stat-item {
+    background-color: var(--color-gray-100);
+    color: var(--color-text-secondary);
+  }
+  
+  .project-card__topics {
+    max-height: 2.5rem;
+    overflow: hidden;
+  }
+}
+
+/* =============================================================================
+   ASSET MANAGEMENT COMPONENTS
+   ============================================================================= */
+
+/* Hero image styling */
+.hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+  transition: opacity var(--transition-base);
+  opacity: 0;
+}
+
+.hero__image.asset-loaded {
+  opacity: 1;
+}
+
+/* About image styling */
+.about__image-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+  transition: opacity var(--transition-base);
+  opacity: 0;
+}
+
+.about__image-photo.asset-loaded {
+  opacity: 1;
+}
+
+/* Project screenshot styling */
+.project-card__screenshot {
+  transition: opacity var(--transition-base), transform var(--transition-base);
+  opacity: 0;
+}
+
+.project-card__screenshot.asset-loaded {
+  opacity: 1;
+}
+
+.project-card:hover .project-card__screenshot.asset-loaded {
+  transform: scale(1.05);
+}
+
+/* Loading placeholders */
+.hero__image-placeholder,
+.about__image-placeholder,
+.project-card__image-placeholder {
+  position: relative;
+  background-color: var(--color-gray-100);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.hero__image-placeholder::before,
+.about__image-placeholder::before,
+.project-card__image-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Hide shimmer when image is loaded */
+.hero__image-placeholder:has(.asset-loaded)::before,
+.about__image-placeholder:has(.asset-loaded)::before,
+.project-card__image-placeholder:has(.asset-loaded)::before {
+  display: none;
+}
+
+/* Fallback styling for browsers that don't support :has() */
+.asset-loaded + .shimmer-overlay {
+  display: none;
+}
+
+/* Responsive image optimization */
+.hero__image,
+.about__image-photo,
+.project-card__screenshot {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* WebP support detection fallback */
+.no-webp .hero__image[data-webp],
+.no-webp .about__image-photo[data-webp],
+.no-webp .project-card__screenshot[data-webp] {
+  content: attr(data-fallback);
+}

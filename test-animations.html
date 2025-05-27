@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation & Micro-Interactions Test</title>
+    <link rel="stylesheet" href="styles/variables.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .test-section {
+            min-height: 100vh;
+            padding: var(--space-16) var(--space-8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .test-section:nth-child(even) {
+            background-color: var(--color-background-alt);
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-8);
+            max-width: 1200px;
+            width: 100%;
+            margin: var(--space-8) 0;
+        }
+        
+        .demo-item {
+            padding: var(--space-6);
+            background: var(--color-background);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+        }
+        
+        .demo-item h4 {
+            margin: 0 0 var(--space-4) 0;
+            color: var(--color-primary);
+        }
+        
+        .demo-item p {
+            margin: 0 0 var(--space-6) 0;
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+        }
+        
+        .demo-buttons {
+            display: flex;
+            gap: var(--space-4);
+            justify-content: center;
+            margin: var(--space-6) 0;
+        }
+        
+        .status-indicator {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--color-background);
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            font-size: var(--font-size-sm);
+        }
+        
+        .reveal-demo {
+            height: 200px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: var(--font-weight-bold);
+            margin: var(--space-4) 0;
+        }
+        
+        .skill-demo {
+            position: relative;
+            background: var(--color-gray-100);
+            height: 40px;
+            border-radius: var(--radius-lg);
+            margin: var(--space-3) 0;
+            overflow: hidden;
+        }
+        
+        .progress-demo {
+            height: 10px;
+            background: var(--color-gray-200);
+            border-radius: var(--radius-sm);
+            margin: var(--space-3) 0;
+            overflow: hidden;
+        }
+        
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-6) 0;
+        }
+        
+        .icon-demo {
+            width: 60px;
+            height: 60px;
+            background: var(--color-primary);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: var(--font-size-xl);
+            cursor: pointer;
+        }
+        
+        .text-demo {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            margin: var(--space-6) 0;
+        }
+        
+        .card-demo {
+            background: var(--color-background);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            box-shadow: var(--shadow-md);
+            margin: var(--space-4);
+            cursor: pointer;
+        }
+        
+        .navigation-demo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--color-background);
+            box-shadow: var(--shadow-sm);
+            z-index: 999;
+            padding: var(--space-4) var(--space-8);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: var(--space-6);
+            justify-content: center;
+        }
+        
+        .nav-link {
+            color: var(--color-text-primary);
+            text-decoration: none;
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-md);
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <!-- Status Indicator -->
+    <div class="status-indicator">
+        <div>Scroll Progress: <span id="scroll-percentage">0%</span></div>
+        <div>Active Section: <span id="active-section">hero</span></div>
+        <div>Animations: <span id="animation-status">Loading...</span></div>
+    </div>
+    
+    <!-- Navigation Demo -->
+    <nav class="navigation-demo">
+        <div class="nav-links">
+            <a href="#hero" class="nav-link">Hero</a>
+            <a href="#reveal" class="nav-link">Reveal</a>
+            <a href="#micro" class="nav-link">Micro</a>
+            <a href="#parallax" class="nav-link">Parallax</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#interactive" class="nav-link">Interactive</a>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="hero" class="test-section">
+        <h1 class="hero__title">Animation & Micro-Interactions Demo</h1>
+        <p class="hero__subtitle reveal-delay-1">Testing advanced scroll animations and user interactions</p>
+        <div class="hero__actions reveal-delay-2">
+            <button class="btn btn--primary glow-effect">Primary Button</button>
+            <button class="btn btn--secondary btn-magnetic">Magnetic Button</button>
+        </div>
+        <div class="text-demo shimmer-text">Shimmer Text Effect</div>
+    </section>
+    
+    <!-- Reveal Animations Section -->
+    <section id="reveal" class="test-section">
+        <h2 class="section__title">Reveal Animations</h2>
+        <p class="section__subtitle">Different entrance animations triggered by scroll</p>
+        
+        <div class="demo-grid">
+            <div class="demo-item">
+                <h4>Fade Up</h4>
+                <p>Standard reveal animation from bottom</p>
+                <div class="reveal-demo reveal">Fade Up</div>
+            </div>
+            
+            <div class="demo-item">
+                <h4>Slide Left</h4>
+                <p>Entrance from the right side</p>
+                <div class="reveal-demo reveal-left">Slide Left</div>
+            </div>
+            
+            <div class="demo-item">
+                <h4>Slide Right</h4>
+                <p>Entrance from the left side</p>
+                <div class="reveal-demo reveal-right">Slide Right</div>
+            </div>
+            
+            <div class="demo-item">
+                <h4>Scale In</h4>
+                <p>Scale animation with bounce effect</p>
+                <div class="reveal-demo reveal-scale">Scale In</div>
+            </div>
+            
+            <div class="demo-item">
+                <h4>Rotate In</h4>
+                <p>Rotation entrance with scaling</p>
+                <div class="reveal-demo reveal-rotate">Rotate In</div>
+            </div>
+            
+            <div class="demo-item">
+                <h4>Stagger Items</h4>
+                <p>Sequential animation of multiple elements</p>
+                <div class="stagger-container">
+                    <div class="demo-item stagger-item">Item 1</div>
+                    <div class="demo-item stagger-item">Item 2</div>
+                    <div class="demo-item stagger-item">Item 3</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Micro-Interactions Section -->
+    <section id="micro" class="test-section">
+        <h2 class="section__title">Micro-Interactions</h2>
+        <p class="section__subtitle">Subtle animations that enhance user experience</p>
+        
+        <div class="demo-grid">
+            <div class="demo-item">
+                <h4>Button Effects</h4>
+                <p>Hover, press, and magnetic interactions</p>
+                <div class="demo-buttons">
+                    <button class="btn btn--primary btn-press">Press Effect</button>
+                    <button class="btn btn--secondary hover-lift">Lift Effect</button>
+                    <button class="btn btn--primary btn-magnetic">Magnetic</button>
+                </div>
+            </div>
+            
+            <div class="demo-item">
+                <h4>Link Interactions</h4>
+                <p>Animated underlines and hover states</p>
+                <div>
+                    <a href="#" class="link-underline">Underline Animation</a><br><br>
+                    <a href="#" class="hover-glow">Glow on Hover</a>
+                </div>
+            </div>
+            
+            <div class="demo-item">
+                <h4>Card Interactions</h4>
+                <p>Tilt, lift, and glow effects</p>
+                <div class="card-demo card-tilt glow-effect">
+                    <h5>Interactive Card</h5>
+                    <p>Hover for 3D tilt effect</p>
+                </div>
+            </div>
+            
+            <div class="demo-item">
+                <h4>Icon Animations</h4>
+                <p>Bounce and scale effects on hover</p>
+                <div class="icon-grid">
+                    <div class="icon-demo icon-bounce">🏠</div>
+                    <div class="icon-demo icon-bounce">⭐</div>
+                    <div class="icon-demo icon-bounce">💼</div>
+                    <div class="icon-demo icon-bounce">📧</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Parallax Section -->
+    <section id="parallax" class="test-section">
+        <h2 class="section__title">Parallax Effects</h2>
+        <p class="section__subtitle">Elements that move at different speeds during scroll</p>
+        
+        <div class="demo-grid">
+            <div class="demo-item">
+                <h4>Slow Parallax</h4>
+                <div class="reveal-demo parallax-slow">Slow Movement</div>
+            </div>
+            
+            <div class="demo-item">
+                <h4>Medium Parallax</h4>
+                <div class="reveal-demo parallax-medium">Medium Movement</div>
+            </div>
+            
+            <div class="demo-item">
+                <h4>Fast Parallax</h4>
+                <div class="reveal-demo parallax-fast">Fast Movement</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Animation Section -->
+    <section id="skills" class="test-section">
+        <h2 class="section__title">Skills Animations</h2>
+        <p class="section__subtitle">Animated progress bars and skill indicators</p>
+        
+        <div class="demo-grid">
+            <div class="demo-item skill-category">
+                <h4>Frontend Skills</h4>
+                <div class="skill-item stagger-item" data-proficiency="95">
+                    JavaScript
+                    <div class="skill-demo">
+                        <div class="progress-demo">
+                            <div class="progress-bar" style="--progress-width: 95%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-item stagger-item" data-proficiency="90">
+                    React
+                    <div class="skill-demo">
+                        <div class="progress-demo">
+                            <div class="progress-bar" style="--progress-width: 90%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-item stagger-item" data-proficiency="85">
+                    CSS3
+                    <div class="skill-demo">
+                        <div class="progress-demo">
+                            <div class="progress-bar" style="--progress-width: 85%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="demo-item">
+                <h4>Loading States</h4>
+                <p>Skeleton and progress animations</p>
+                <div class="skeleton" style="height: 20px; margin: 10px 0; border-radius: 4px;"></div>
+                <div class="skeleton" style="height: 20px; margin: 10px 0; border-radius: 4px; width: 80%;"></div>
+                <div class="skeleton" style="height: 20px; margin: 10px 0; border-radius: 4px; width: 60%;"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Interactive Elements Section -->
+    <section id="interactive" class="test-section">
+        <h2 class="section__title">Interactive Elements</h2>
+        <p class="section__subtitle">Advanced interactions and animations</p>
+        
+        <div class="demo-grid">
+            <div class="demo-item">
+                <h4>Morphing Border</h4>
+                <p>Animated gradient border effect</p>
+                <div class="card-demo morph-border">
+                    <h5>Animated Border</h5>
+                    <p>Rotating gradient border</p>
+                </div>
+            </div>
+            
+            <div class="demo-item">
+                <h4>Typing Animation</h4>
+                <p>Typewriter effect with cursor</p>
+                <div class="typing-text">This text appears character by character...</div>
+            </div>
+            
+            <div class="demo-item">
+                <h4>Success Animation</h4>
+                <p>Checkmark animation for completed actions</p>
+                <div style="display: flex; justify-content: center; margin: 20px 0;">
+                    <svg class="checkmark" viewBox="0 0 52 52">
+                        <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                        <path class="checkmark-check" fill="none" d="m14.1 27.2l7.1 7.2 16.7-16.8"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="demo-item">
+                <h4>Floating Elements</h4>
+                <p>Buttons with advanced hover effects</p>
+                <button class="btn btn--primary fab">Floating Button</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="scripts/main.js"></script>
+    <script>
+        // Initialize status updates
+        function updateStatus() {
+            const scrollPercentage = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+            document.getElementById('scroll-percentage').textContent = scrollPercentage + '%';
+            
+            // Determine active section
+            const sections = document.querySelectorAll('section[id]');
+            let activeSection = 'hero';
+            
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 100 && rect.bottom >= 100) {
+                    activeSection = section.id;
+                }
+            });
+            
+            document.getElementById('active-section').textContent = activeSection;
+        }
+        
+        // Update animation status
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('animation-status').textContent = 'Ready';
+            
+            // Add scroll listener for status updates
+            window.addEventListener('scroll', Utils.throttle(updateStatus, 16));
+            
+            // Test magnetic effect on demo buttons
+            const magneticButtons = document.querySelectorAll('.btn-magnetic');
+            magneticButtons.forEach(btn => {
+                if (window.ScrollAnimations && window.ScrollAnimations.prototype.addMagneticEffect) {
+                    // Note: This would normally be called by the ScrollAnimations class
+                    console.log('Magnetic effects would be applied here');
+                }
+            });
+            
+            // Add interactive demos
+            addInteractiveDemos();
+        });
+        
+        function addInteractiveDemos() {
+            // Add click handlers for demo elements
+            const demoCards = document.querySelectorAll('.card-demo');
+            demoCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    card.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        card.style.transform = '';
+                    }, 150);
+                });
+            });
+            
+            // Add hover effects for icon demos
+            const iconDemos = document.querySelectorAll('.icon-demo');
+            iconDemos.forEach(icon => {
+                icon.addEventListener('mouseenter', () => {
+                    icon.style.transform = 'scale(1.2) translateY(-5px)';
+                });
+                
+                icon.addEventListener('mouseleave', () => {
+                    icon.style.transform = '';
+                });
+            });
+            
+            // Trigger typing animation
+            const typingElement = document.querySelector('.typing-text');
+            if (typingElement) {
+                // Reset and restart typing animation
+                typingElement.style.width = '0';
+                setTimeout(() => {
+                    typingElement.style.width = '100%';
+                }, 1000);
+            }
+        }
+        
+        // Test performance
+        let animationFrameCount = 0;
+        let lastTime = performance.now();
+        
+        function measurePerformance() {
+            animationFrameCount++;
+            const currentTime = performance.now();
+            
+            if (currentTime - lastTime >= 1000) {
+                const fps = Math.round(animationFrameCount * 1000 / (currentTime - lastTime));
+                console.log(`Animation FPS: ${fps}`);
+                animationFrameCount = 0;
+                lastTime = currentTime;
+            }
+            
+            requestAnimationFrame(measurePerformance);
+        }
+        
+        measurePerformance();
+    </script>
+</body>
+</html>

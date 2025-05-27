@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode Testing - Personal Portfolio</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/variables.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <style>
+        /* Test page specific styles */
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-6);
+        }
+        
+        .test-section {
+            margin-bottom: var(--space-12);
+            padding: var(--space-6);
+            background: var(--color-background-alt);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+        }
+        
+        .test-title {
+            font-size: var(--font-size-2xl);
+            color: var(--color-primary);
+            margin-bottom: var(--space-4);
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-4) 0;
+        }
+        
+        .color-swatch {
+            padding: var(--space-4);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: all var(--transition-base);
+        }
+        
+        .color-primary { background: var(--color-primary); color: white; }
+        .color-secondary { background: var(--color-secondary); color: white; }
+        .color-background { background: var(--color-background); color: var(--color-text-primary); }
+        .color-background-alt { background: var(--color-background-alt); color: var(--color-text-primary); }
+        .color-text-primary { background: var(--color-text-primary); color: var(--color-background); }
+        .color-text-secondary { background: var(--color-text-secondary); color: var(--color-background); }
+        
+        .theme-info {
+            padding: var(--space-4);
+            background: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            margin: var(--space-4) 0;
+        }
+        
+        .component-demo {
+            display: grid;
+            gap: var(--space-4);
+        }
+        
+        .form-demo {
+            max-width: 400px;
+        }
+        
+        .card-demo {
+            background: var(--color-background);
+            padding: var(--space-6);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .theme-status {
+            position: fixed;
+            top: var(--space-4);
+            right: var(--space-4);
+            padding: var(--space-3);
+            background: var(--color-primary);
+            color: white;
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-semibold);
+            z-index: var(--z-tooltip);
+        }
+        
+        .instructions {
+            background: var(--color-primary-light);
+            color: var(--color-primary-dark);
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-6);
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Status Indicator -->
+    <div class="theme-status" id="themeStatus">
+        Theme: <span id="currentTheme">Loading...</span>
+    </div>
+    
+    <!-- Header with Theme Toggle -->
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <div class="logo">
+                    <span class="logo__text">Dark Mode Test</span>
+                </div>
+                
+                <nav class="nav">
+                    <ul class="nav__menu">
+                        <!-- Theme toggle will be inserted here -->
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <main class="test-container">
+        <h1 style="text-align: center; color: var(--color-primary); margin-bottom: var(--space-8);">
+            Dark Mode System Testing
+        </h1>
+        
+        <div class="instructions">
+            <h2>Testing Instructions:</h2>
+            <ul>
+                <li><strong>Theme Toggle:</strong> Click the theme toggle button in the header to cycle through: Light → Dark → Auto → Light</li>
+                <li><strong>System Preference:</strong> Change your system dark mode setting and observe auto theme behavior</li>
+                <li><strong>Persistence:</strong> Refresh the page to verify theme preference is saved</li>
+                <li><strong>Smooth Transitions:</strong> Observe smooth color transitions when switching themes</li>
+                <li><strong>Accessibility:</strong> Test keyboard navigation (Tab to button, Space/Enter to activate)</li>
+            </ul>
+        </div>
+        
+        <!-- Theme Information Section -->
+        <div class="test-section">
+            <h2 class="test-title">Theme Information</h2>
+            <div class="theme-info" id="themeInfo">
+                <p><strong>Current Theme:</strong> <span id="currentThemeDisplay">Loading...</span></p>
+                <p><strong>Effective Theme:</strong> <span id="effectiveThemeDisplay">Loading...</span></p>
+                <p><strong>System Preference:</strong> <span id="systemPreferenceDisplay">Loading...</span></p>
+                <p><strong>Data Attribute:</strong> <span id="dataAttributeDisplay">Loading...</span></p>
+            </div>
+        </div>
+        
+        <!-- Color Palette Testing -->
+        <div class="test-section">
+            <h2 class="test-title">Color Palette</h2>
+            <p>Verify that colors change appropriately between light and dark themes:</p>
+            <div class="test-grid">
+                <div class="color-swatch color-primary">Primary Color</div>
+                <div class="color-swatch color-secondary">Secondary Color</div>
+                <div class="color-swatch color-background">Background</div>
+                <div class="color-swatch color-background-alt">Background Alt</div>
+                <div class="color-swatch color-text-primary">Text Primary</div>
+                <div class="color-swatch color-text-secondary">Text Secondary</div>
+            </div>
+        </div>
+        
+        <!-- Component Testing -->
+        <div class="test-section">
+            <h2 class="test-title">Component Testing</h2>
+            <div class="component-demo">
+                <!-- Button Testing -->
+                <div>
+                    <h3>Buttons</h3>
+                    <div style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
+                        <button class="btn btn--primary">Primary Button</button>
+                        <button class="btn btn--secondary">Secondary Button</button>
+                        <button class="btn btn--primary" disabled>Disabled Button</button>
+                    </div>
+                </div>
+                
+                <!-- Form Testing -->
+                <div class="form-demo">
+                    <h3>Form Elements</h3>
+                    <div class="form-group">
+                        <label for="test-input" class="form-label">Test Input</label>
+                        <input type="text" id="test-input" class="form-input" placeholder="Enter text here">
+                    </div>
+                    <div class="form-group">
+                        <label for="test-textarea" class="form-label">Test Textarea</label>
+                        <textarea id="test-textarea" class="form-textarea" placeholder="Enter message here"></textarea>
+                    </div>
+                </div>
+                
+                <!-- Card Testing -->
+                <div>
+                    <h3>Card Component</h3>
+                    <div class="card-demo">
+                        <h4 style="color: var(--color-primary); margin-bottom: var(--space-3);">Sample Card</h4>
+                        <p style="color: var(--color-text-secondary); margin-bottom: var(--space-4);">
+                            This card demonstrates how background, text, and border colors adapt to the current theme.
+                        </p>
+                        <div style="display: flex; gap: var(--space-2);">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation Testing -->
+        <div class="test-section">
+            <h2 class="test-title">Navigation Testing</h2>
+            <nav style="background: var(--color-background-alt); padding: var(--space-4); border-radius: var(--radius-md);">
+                <ul style="display: flex; gap: var(--space-6); list-style: none; margin: 0; padding: 0;">
+                    <li><a href="#" class="nav__link">Home</a></li>
+                    <li><a href="#" class="nav__link">About</a></li>
+                    <li><a href="#" class="nav__link is-active">Projects</a></li>
+                    <li><a href="#" class="nav__link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <!-- Accessibility Testing -->
+        <div class="test-section">
+            <h2 class="test-title">Accessibility Features</h2>
+            <ul>
+                <li><strong>Focus Indicators:</strong> Tab through interactive elements to verify focus outlines</li>
+                <li><strong>Color Contrast:</strong> Verify text remains readable in both themes</li>
+                <li><strong>Reduced Motion:</strong> Check if transitions respect prefers-reduced-motion</li>
+                <li><strong>Screen Reader:</strong> Theme changes should be announced appropriately</li>
+            </ul>
+            
+            <div style="margin-top: var(--space-4);">
+                <button onclick="testFocus()" class="btn btn--secondary">Test Focus Management</button>
+                <button onclick="testContrast()" class="btn btn--secondary">Test Color Contrast</button>
+            </div>
+        </div>
+        
+        <!-- Performance Testing -->
+        <div class="test-section">
+            <h2 class="test-title">Performance Metrics</h2>
+            <div id="performanceMetrics">
+                <p><strong>Theme Switch Time:</strong> <span id="switchTime">Not measured</span></p>
+                <p><strong>Transition Duration:</strong> <span id="transitionDuration">200ms</span></p>
+                <p><strong>Storage Operations:</strong> <span id="storageOps">0</span></p>
+            </div>
+            <button onclick="measurePerformance()" class="btn btn--secondary">Measure Performance</button>
+        </div>
+    </main>
+    
+    <!-- Scripts -->
+    <script src="scripts/theme-manager.js"></script>
+    
+    <script>
+        // Theme testing utilities
+        let performanceMetrics = {
+            switchTime: 0,
+            storageOps: 0
+        };
+        
+        // Update theme information display
+        function updateThemeDisplay() {
+            if (window.themeManager) {
+                const info = window.themeManager.getThemeInfo();
+                const html = document.documentElement;
+                
+                document.getElementById('currentTheme').textContent = info.current;
+                document.getElementById('currentThemeDisplay').textContent = info.current;
+                document.getElementById('effectiveThemeDisplay').textContent = info.effective;
+                document.getElementById('systemPreferenceDisplay').textContent = info.system;
+                document.getElementById('dataAttributeDisplay').textContent = 
+                    html.getAttribute('data-theme') || 'none (system preference)';
+            }
+        }
+        
+        // Listen for theme changes
+        document.addEventListener('themechange', (e) => {
+            console.log('Theme changed:', e.detail);
+            updateThemeDisplay();
+            performanceMetrics.storageOps++;
+            document.getElementById('storageOps').textContent = performanceMetrics.storageOps;
+        });
+        
+        // Wait for theme manager to initialize
+        function waitForThemeManager() {
+            if (window.themeManager) {
+                updateThemeDisplay();
+                
+                // Set up periodic updates
+                setInterval(updateThemeDisplay, 1000);
+            } else {
+                setTimeout(waitForThemeManager, 100);
+            }
+        }
+        
+        waitForThemeManager();
+        
+        // Test utilities
+        function testFocus() {
+            const focusableElements = document.querySelectorAll('button, input, textarea, a, [tabindex]');
+            let currentIndex = 0;
+            
+            function focusNext() {
+                if (currentIndex < focusableElements.length) {
+                    focusableElements[currentIndex].focus();
+                    currentIndex++;
+                    setTimeout(focusNext, 500);
+                }
+            }
+            
+            focusNext();
+        }
+        
+        function testContrast() {
+            // This would typically integrate with a contrast checking library
+            alert('Manual contrast testing: Verify all text remains readable in both light and dark themes.');
+        }
+        
+        function measurePerformance() {
+            const startTime = performance.now();
+            
+            // Simulate theme switch
+            if (window.themeManager) {
+                window.themeManager.cycleTheme();
+                
+                const endTime = performance.now();
+                performanceMetrics.switchTime = endTime - startTime;
+                
+                document.getElementById('switchTime').textContent = 
+                    `${performanceMetrics.switchTime.toFixed(2)}ms`;
+            }
+        }
+        
+        // System preference change simulation for testing
+        function simulateSystemPreferenceChange() {
+            console.log('To test system preference changes:');
+            console.log('1. Open system settings');
+            console.log('2. Change dark mode preference');
+            console.log('3. Observe theme changes when current theme is "auto"');
+        }
+        
+        console.log('Dark Mode Testing Page Loaded');
+        console.log('Theme Manager:', window.themeManager);
+        console.log('Available commands:');
+        console.log('- simulateSystemPreferenceChange()');
+        console.log('- measurePerformance()');
+        console.log('- testFocus()');
+        console.log('- testContrast()');
+    </script>
+</body>
+</html>
