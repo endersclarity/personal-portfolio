@@ -1,0 +1,113 @@
+{
+  "personal": {
+    "name": "Kaelen Jennings",
+    "title": "Full Stack Developer",
+    "location": "Grass Valley, CA",
+    "email": "endersclarity@gmail.com",
+    "phone": "209-304-3395",
+    "bio": {
+      "short": "Passionate full stack developer with expertise in modern web technologies, focused on creating innovative solutions and exceptional user experiences.",
+      "long": [
+        "I'm a passionate full stack developer with over 5 years of experience building modern web applications. I specialize in creating clean, efficient code and delivering exceptional user experiences that make a real impact.",
+        "My journey in technology is driven by curiosity and a love for problem-solving. I enjoy working with cutting-edge technologies and frameworks, always staying current with industry best practices and emerging trends.",
+        "When I'm not coding, you'll find me exploring new technologies, contributing to open source projects, or sharing knowledge with the developer community. I believe in continuous learning and the power of collaboration to create amazing things."
+      ]
+    },
+    "taglines": [
+      "Building the future, one line of code at a time",
+      "Where innovation meets implementation",
+      "Crafting digital experiences that matter"
+    ]
+  },
+  "social": {
+    "github": {
+      "username": "endersclarity",
+      "url": "https://github.com/endersclarity"
+    },
+    "linkedin": {
+      "username": "kaelen-jennings",
+      "url": "https://linkedin.com/in/kaelen-jennings"
+    },
+    "portfolio": {
+      "url": "https://endersclarity.github.io/personal-portfolio"
+    }
+  },
+  "contact": {
+    "availability": "Available for freelance projects and full-time opportunities",
+    "response_time": "Usually responds within 24 hours",
+    "preferred_contact": "email",
+    "timezone": "PST (UTC-8)"
+  },
+  "resume": {
+    "download_url": "assets/resume/Kaelen_Jennings_Resume.pdf",
+    "last_updated": "2025-05-26"
+  },
+  "experience": [
+    {
+      "title": "Full Stack Developer",
+      "company": "Freelance",
+      "location": "Remote",
+      "duration": "2020 - Present",
+      "type": "Freelance",
+      "description": "Developing custom web applications and solutions for clients across various industries, specializing in modern JavaScript frameworks and responsive design.",
+      "highlights": [
+        "Built 15+ custom web applications using React, Node.js, and various databases",
+        "Improved client website performance by average of 40% through optimization techniques",
+        "Implemented responsive designs that increased mobile user engagement by 60%",
+        "Collaborated with design teams to create pixel-perfect, accessible user interfaces"
+      ],
+      "technologies": ["React", "Node.js", "JavaScript", "HTML5", "CSS3", "MongoDB", "PostgreSQL"]
+    },
+    {
+      "title": "Web Developer",
+      "company": "Tech Solutions Inc",
+      "location": "San Francisco, CA",
+      "duration": "2018 - 2020",
+      "type": "Full-time",
+      "description": "Responsible for front-end development and user experience optimization for enterprise web applications.",
+      "highlights": [
+        "Led front-end development for 3 major client projects",
+        "Reduced page load times by 50% through code optimization and caching strategies",
+        "Mentored junior developers and established coding standards for the team",
+        "Collaborated with UX designers to implement user-centered design principles"
+      ],
+      "technologies": ["Vue.js", "JavaScript", "SASS", "Webpack", "Git", "Agile"]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Science in Computer Science",
+      "institution": "California State University",
+      "location": "Sacramento, CA",
+      "graduation": "2018",
+      "gpa": "3.7",
+      "relevant_coursework": [
+        "Data Structures and Algorithms",
+        "Web Development",
+        "Database Systems",
+        "Software Engineering",
+        "Computer Networks"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "AWS Certified Developer - Associate",
+      "issuer": "Amazon Web Services",
+      "date": "2023",
+      "credential_id": "AWS-DEV-2023-001"
+    },
+    {
+      "name": "Google Analytics Certified",
+      "issuer": "Google",
+      "date": "2022",
+      "credential_id": "GA-CERT-2022-045"
+    }
+  ],
+  "highlights": {
+    "years_experience": 5,
+    "projects_completed": 25,
+    "technologies_mastered": 15,
+    "happy_clients": 18
+  }
+}

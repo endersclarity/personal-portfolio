@@ -448,6 +448,9 @@ document.addEventListener('DOMContentLoaded', () => {
   new ScrollAnimations();
   new PerformanceOptimizer();
   
+  // Initialize content management system
+  window.contentManager = new ContentManager();
+  
   // Add smooth reveal to hero section
   const heroElements = document.querySelectorAll('.hero__title, .hero__subtitle, .hero__description, .hero__actions');
   heroElements.forEach((el, index) => {

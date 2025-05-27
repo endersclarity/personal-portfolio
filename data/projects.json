@@ -1,0 +1,285 @@
+{
+  "featured_projects": [
+    {
+      "id": "personal-portfolio",
+      "title": "Personal Portfolio Website",
+      "description": "Modern, responsive portfolio website built with vanilla HTML5, CSS3, and JavaScript. Features dynamic GitHub integration, smooth animations, and accessibility-first design.",
+      "long_description": "A comprehensive portfolio website showcasing my technical skills and projects. Built from scratch using semantic HTML5, custom CSS with design tokens, and vanilla JavaScript for optimal performance. Features include dynamic GitHub API integration, responsive mobile-first design, smooth scroll navigation, and WCAG 2.1 AA accessibility compliance.",
+      "status": "in_development",
+      "featured": true,
+      "github_repo": "personal-portfolio",
+      "live_url": "https://endersclarity.github.io/personal-portfolio",
+      "demo_url": null,
+      "technologies": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "GitHub API",
+        "Responsive Design",
+        "Accessibility"
+      ],
+      "category": "Web Development",
+      "image": "assets/projects/portfolio-screenshot.jpg",
+      "gallery": [
+        "assets/projects/portfolio-desktop.jpg",
+        "assets/projects/portfolio-mobile.jpg",
+        "assets/projects/portfolio-projects.jpg"
+      ],
+      "features": [
+        "Responsive mobile-first design",
+        "Dynamic GitHub API integration",
+        "Smooth scroll navigation",
+        "Contact form with validation",
+        "Performance optimized (90+ Lighthouse)",
+        "WCAG 2.1 AA accessibility compliant"
+      ],
+      "challenges": [
+        "Creating a design system from scratch",
+        "Implementing smooth animations without affecting performance",
+        "Ensuring cross-browser compatibility",
+        "Optimizing for both mobile and desktop experiences"
+      ],
+      "learned": [
+        "Advanced CSS Grid and Flexbox techniques",
+        "JavaScript intersection observer for scroll animations",
+        "Web accessibility best practices",
+        "Performance optimization strategies"
+      ]
+    },
+    {
+      "id": "task-manager-app",
+      "title": "Task Manager Application",
+      "description": "Full-stack task management application with real-time collaboration features, built using React, Node.js, and MongoDB.",
+      "long_description": "A comprehensive task management solution designed for teams and individuals. Features real-time collaboration, drag-and-drop task organization, deadline tracking, and team member assignment. Built with modern web technologies and focusing on user experience and performance.",
+      "status": "completed",
+      "featured": true,
+      "github_repo": "task-manager-app",
+      "live_url": "https://task-manager-demo.netlify.app",
+      "demo_url": "https://task-manager-demo.netlify.app/demo",
+      "technologies": [
+        "React",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Socket.io",
+        "JWT Authentication",
+        "Material-UI"
+      ],
+      "category": "Full Stack",
+      "image": "assets/projects/task-manager-screenshot.jpg",
+      "gallery": [
+        "assets/projects/task-manager-dashboard.jpg",
+        "assets/projects/task-manager-board.jpg",
+        "assets/projects/task-manager-mobile.jpg"
+      ],
+      "features": [
+        "Real-time collaboration with Socket.io",
+        "Drag-and-drop task organization",
+        "Team member management",
+        "Deadline tracking and notifications",
+        "Progress analytics and reporting",
+        "Mobile-responsive design"
+      ],
+      "challenges": [
+        "Implementing real-time synchronization across multiple users",
+        "Optimizing database queries for large datasets",
+        "Creating intuitive drag-and-drop interactions",
+        "Managing complex state across multiple components"
+      ],
+      "learned": [
+        "Real-time web application architecture",
+        "Advanced React state management patterns",
+        "Database optimization techniques",
+        "WebSocket implementation and scaling"
+      ]
+    },
+    {
+      "id": "weather-dashboard",
+      "title": "Weather Dashboard",
+      "description": "Interactive weather application with location-based forecasts, historical data visualization, and customizable widgets.",
+      "long_description": "A modern weather dashboard that provides comprehensive weather information with beautiful data visualizations. Features include current conditions, 7-day forecasts, interactive maps, historical weather data, and customizable dashboard widgets. Built with a focus on data visualization and user experience.",
+      "status": "completed",
+      "featured": true,
+      "github_repo": "weather-dashboard",
+      "live_url": "https://weather-dashboard-kj.netlify.app",
+      "demo_url": null,
+      "technologies": [
+        "Vue.js",
+        "Chart.js",
+        "OpenWeatherMap API",
+        "Geolocation API",
+        "CSS Grid",
+        "Local Storage",
+        "Progressive Web App"
+      ],
+      "category": "Frontend",
+      "image": "assets/projects/weather-dashboard-screenshot.jpg",
+      "gallery": [
+        "assets/projects/weather-main.jpg",
+        "assets/projects/weather-charts.jpg",
+        "assets/projects/weather-mobile.jpg"
+      ],
+      "features": [
+        "Current weather conditions and forecasts",
+        "Interactive weather maps",
+        "Historical data visualization",
+        "Location-based automatic updates",
+        "Customizable dashboard widgets",
+        "Offline capability with PWA features"
+      ],
+      "challenges": [
+        "Creating responsive data visualizations",
+        "Handling multiple API integrations",
+        "Implementing efficient data caching strategies",
+        "Designing intuitive user interface for complex data"
+      ],
+      "learned": [
+        "Advanced data visualization techniques",
+        "Progressive Web App development",
+        "API rate limiting and caching strategies",
+        "Chart.js library mastery"
+      ]
+    },
+    {
+      "id": "ecommerce-platform",
+      "title": "E-commerce Platform",
+      "description": "Full-featured e-commerce solution with payment processing, inventory management, and admin dashboard.",
+      "long_description": "A complete e-commerce platform designed for small to medium businesses. Includes product catalog management, shopping cart functionality, secure payment processing, order tracking, and comprehensive admin dashboard. Built with scalability and security as primary concerns.",
+      "status": "completed",
+      "featured": false,
+      "github_repo": "ecommerce-platform",
+      "live_url": "https://ecommerce-demo-kj.herokuapp.com",
+      "demo_url": "https://ecommerce-demo-kj.herokuapp.com/demo",
+      "technologies": [
+        "React",
+        "Redux",
+        "Node.js",
+        "PostgreSQL",
+        "Stripe API",
+        "JWT Authentication",
+        "AWS S3",
+        "Heroku"
+      ],
+      "category": "Full Stack",
+      "image": "assets/projects/ecommerce-screenshot.jpg",
+      "gallery": [
+        "assets/projects/ecommerce-home.jpg",
+        "assets/projects/ecommerce-product.jpg",
+        "assets/projects/ecommerce-admin.jpg"
+      ],
+      "features": [
+        "Complete product catalog management",
+        "Shopping cart and checkout process",
+        "Secure payment processing with Stripe",
+        "Order tracking and history",
+        "Admin dashboard with analytics",
+        "Image upload and management"
+      ],
+      "challenges": [
+        "Implementing secure payment processing",
+        "Managing complex state with Redux",
+        "Optimizing database performance",
+        "Ensuring data security and validation"
+      ],
+      "learned": [
+        "E-commerce architecture patterns",
+        "Payment gateway integration",
+        "Advanced Redux state management",
+        "Database design for complex relationships"
+      ]
+    },
+    {
+      "id": "blog-cms",
+      "title": "Blog Content Management System",
+      "description": "Custom CMS for blog management with markdown support, SEO optimization, and multi-author capabilities.",
+      "long_description": "A powerful content management system designed specifically for bloggers and content creators. Features include markdown editor with live preview, SEO optimization tools, multi-author support, comment system, and analytics integration. Built with content creators' workflow in mind.",
+      "status": "completed",
+      "featured": false,
+      "github_repo": "blog-cms",
+      "live_url": "https://blog-cms-demo.vercel.app",
+      "demo_url": null,
+      "technologies": [
+        "Next.js",
+        "TypeScript",
+        "Prisma",
+        "PostgreSQL",
+        "NextAuth.js",
+        "Tailwind CSS",
+        "MDX",
+        "Vercel"
+      ],
+      "category": "Full Stack",
+      "image": "assets/projects/blog-cms-screenshot.jpg",
+      "gallery": [
+        "assets/projects/blog-cms-editor.jpg",
+        "assets/projects/blog-cms-dashboard.jpg",
+        "assets/projects/blog-cms-frontend.jpg"
+      ],
+      "features": [
+        "Rich markdown editor with live preview",
+        "SEO optimization tools",
+        "Multi-author support and permissions",
+        "Comment system with moderation",
+        "Analytics and performance tracking",
+        "Responsive admin interface"
+      ],
+      "challenges": [
+        "Building a rich text editor experience",
+        "Implementing complex user permissions",
+        "Optimizing for SEO and performance",
+        "Creating intuitive content workflow"
+      ],
+      "learned": [
+        "Next.js full-stack development",
+        "TypeScript in complex applications",
+        "Content management architecture",
+        "SEO optimization techniques"
+      ]
+    }
+  ],
+  "project_categories": [
+    "All",
+    "Web Development",
+    "Full Stack",
+    "Frontend",
+    "Backend",
+    "Mobile",
+    "API"
+  ],
+  "technologies_used": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Vue.js",
+    "Next.js",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "PostgreSQL",
+    "GraphQL",
+    "RESTful APIs",
+    "AWS",
+    "Docker",
+    "Git"
+  ],
+  "github_config": {
+    "username": "endersclarity",
+    "featured_repos": [
+      "personal-portfolio",
+      "task-manager-app",
+      "weather-dashboard",
+      "ecommerce-platform",
+      "blog-cms"
+    ],
+    "exclude_repos": [
+      "endersclarity",
+      "config-files",
+      "learning-resources",
+      "archived-projects"
+    ],
+    "api_cache_duration": 3600,
+    "fallback_message": "GitHub data temporarily unavailable. Please check back later."
+  }
+}

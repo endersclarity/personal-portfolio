@@ -1,0 +1,272 @@
+{
+  "categories": {
+    "frontend": {
+      "title": "Frontend Development",
+      "description": "Modern web technologies for creating engaging user interfaces",
+      "skills": [
+        {
+          "name": "HTML5",
+          "proficiency": 95,
+          "years": 5,
+          "category": "markup",
+          "description": "Semantic markup, accessibility, and modern HTML features"
+        },
+        {
+          "name": "CSS3",
+          "proficiency": 90,
+          "years": 5,
+          "category": "styling",
+          "description": "Advanced CSS, Grid, Flexbox, animations, and responsive design"
+        },
+        {
+          "name": "JavaScript",
+          "proficiency": 88,
+          "years": 5,
+          "category": "programming",
+          "description": "ES6+, async/await, DOM manipulation, and modern JavaScript patterns"
+        },
+        {
+          "name": "React",
+          "proficiency": 85,
+          "years": 3,
+          "category": "framework",
+          "description": "Hooks, Context API, state management, and component optimization"
+        },
+        {
+          "name": "Vue.js",
+          "proficiency": 80,
+          "years": 2,
+          "category": "framework",
+          "description": "Composition API, Vuex, Vue Router, and single-file components"
+        },
+        {
+          "name": "TypeScript",
+          "proficiency": 75,
+          "years": 2,
+          "category": "programming",
+          "description": "Type safety, interfaces, generics, and advanced TypeScript patterns"
+        },
+        {
+          "name": "Sass/SCSS",
+          "proficiency": 85,
+          "years": 4,
+          "category": "styling",
+          "description": "Variables, mixins, functions, and advanced Sass features"
+        },
+        {
+          "name": "Tailwind CSS",
+          "proficiency": 80,
+          "years": 2,
+          "category": "framework",
+          "description": "Utility-first CSS, custom configurations, and component patterns"
+        }
+      ]
+    },
+    "backend": {
+      "title": "Backend Development",
+      "description": "Server-side technologies and database management",
+      "skills": [
+        {
+          "name": "Node.js",
+          "proficiency": 82,
+          "years": 4,
+          "category": "runtime",
+          "description": "Express.js, middleware, authentication, and API development"
+        },
+        {
+          "name": "Python",
+          "proficiency": 78,
+          "years": 3,
+          "category": "programming",
+          "description": "Django, Flask, data processing, and automation scripts"
+        },
+        {
+          "name": "Express.js",
+          "proficiency": 85,
+          "years": 4,
+          "category": "framework",
+          "description": "RESTful APIs, middleware, routing, and server-side logic"
+        },
+        {
+          "name": "MongoDB",
+          "proficiency": 80,
+          "years": 3,
+          "category": "database",
+          "description": "Document modeling, aggregation, indexing, and Mongoose ODM"
+        },
+        {
+          "name": "PostgreSQL",
+          "proficiency": 75,
+          "years": 2,
+          "category": "database",
+          "description": "Relational design, complex queries, and performance optimization"
+        },
+        {
+          "name": "RESTful APIs",
+          "proficiency": 88,
+          "years": 4,
+          "category": "architecture",
+          "description": "API design, documentation, versioning, and best practices"
+        },
+        {
+          "name": "GraphQL",
+          "proficiency": 70,
+          "years": 1,
+          "category": "query_language",
+          "description": "Schema design, resolvers, and efficient data fetching"
+        }
+      ]
+    },
+    "tools": {
+      "title": "Tools & Technologies",
+      "description": "Development tools, deployment, and workflow optimization",
+      "skills": [
+        {
+          "name": "Git",
+          "proficiency": 90,
+          "years": 5,
+          "category": "version_control",
+          "description": "Advanced Git workflows, branching strategies, and collaboration"
+        },
+        {
+          "name": "Docker",
+          "proficiency": 75,
+          "years": 2,
+          "category": "containerization",
+          "description": "Containerization, Docker Compose, and deployment strategies"
+        },
+        {
+          "name": "AWS",
+          "proficiency": 70,
+          "years": 2,
+          "category": "cloud",
+          "description": "EC2, S3, Lambda, and serverless architecture"
+        },
+        {
+          "name": "Webpack",
+          "proficiency": 78,
+          "years": 3,
+          "category": "build_tool",
+          "description": "Module bundling, optimization, and build process configuration"
+        },
+        {
+          "name": "Jest",
+          "proficiency": 80,
+          "years": 3,
+          "category": "testing",
+          "description": "Unit testing, mocking, and test-driven development"
+        },
+        {
+          "name": "Figma",
+          "proficiency": 75,
+          "years": 2,
+          "category": "design",
+          "description": "Design collaboration, prototyping, and design system creation"
+        },
+        {
+          "name": "VS Code",
+          "proficiency": 95,
+          "years": 5,
+          "category": "editor",
+          "description": "Advanced features, extensions, and productivity optimization"
+        },
+        {
+          "name": "Postman",
+          "proficiency": 85,
+          "years": 4,
+          "category": "api_testing",
+          "description": "API testing, documentation, and automation"
+        }
+      ]
+    },
+    "soft_skills": {
+      "title": "Professional Skills",
+      "description": "Communication, leadership, and project management abilities",
+      "skills": [
+        {
+          "name": "Problem Solving",
+          "proficiency": 92,
+          "years": 5,
+          "category": "analytical",
+          "description": "Breaking down complex problems into manageable solutions"
+        },
+        {
+          "name": "Communication",
+          "proficiency": 88,
+          "years": 5,
+          "category": "interpersonal",
+          "description": "Clear technical communication with teams and stakeholders"
+        },
+        {
+          "name": "Project Management",
+          "proficiency": 80,
+          "years": 3,
+          "category": "organizational",
+          "description": "Agile methodologies, timeline management, and team coordination"
+        },
+        {
+          "name": "Mentoring",
+          "proficiency": 85,
+          "years": 3,
+          "category": "leadership",
+          "description": "Guiding junior developers and knowledge sharing"
+        },
+        {
+          "name": "Continuous Learning",
+          "proficiency": 95,
+          "years": 5,
+          "category": "personal",
+          "description": "Staying current with technology trends and best practices"
+        }
+      ]
+    }
+  },
+  "skill_levels": {
+    "90-100": {
+      "label": "Expert",
+      "description": "Deep expertise with ability to mentor others and architect solutions"
+    },
+    "80-89": {
+      "label": "Advanced",
+      "description": "Strong proficiency with complex problem-solving capabilities"
+    },
+    "70-79": {
+      "label": "Intermediate",
+      "description": "Solid understanding with ability to work independently"
+    },
+    "60-69": {
+      "label": "Beginner",
+      "description": "Basic knowledge with guided development capability"
+    }
+  },
+  "featured_skills": [
+    "JavaScript",
+    "React",
+    "Node.js",
+    "CSS3",
+    "HTML5",
+    "Express.js",
+    "MongoDB",
+    "Git"
+  ],
+  "learning_goals": [
+    {
+      "skill": "Next.js",
+      "target_proficiency": 80,
+      "timeline": "Q2 2025",
+      "reason": "Advanced React framework for production applications"
+    },
+    {
+      "skill": "Kubernetes",
+      "target_proficiency": 75,
+      "timeline": "Q3 2025",
+      "reason": "Container orchestration for scalable deployments"
+    },
+    {
+      "skill": "Three.js",
+      "target_proficiency": 70,
+      "timeline": "Q4 2025",
+      "reason": "3D graphics for immersive web experiences"
+    }
+  ]
+}
