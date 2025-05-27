@@ -21,6 +21,7 @@
     <title>Kaelen Jennings - Full Stack Developer</title>
     
     <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     
     <!-- Stylesheets -->
@@ -102,7 +103,11 @@
                 </div>
                 <div class="hero__visual" aria-hidden="true">
                     <div class="hero__image-placeholder">
-                        <!-- Profile image will be added here -->
+                        <img data-asset="profile" 
+                             data-category="images" 
+                             alt="Kaelen Jennings - Professional Profile Photo"
+                             class="hero__image"
+                             loading="eager">
                     </div>
                 </div>
             </div>
@@ -139,7 +144,11 @@
                     </div>
                     <div class="about__image">
                         <div class="about__image-placeholder">
-                            <!-- About image will be added here -->
+                            <img data-asset="profile" 
+                                 data-category="images" 
+                                 alt="Kaelen Jennings - About Photo"
+                                 class="about__image-photo"
+                                 loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -346,6 +355,7 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="scripts/asset-manager.js"></script>
     <script src="scripts/github-api.js"></script>
     <script src="scripts/content-manager.js"></script>
     <script src="scripts/main.js"></script>

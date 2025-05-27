@@ -846,3 +846,109 @@
     overflow: hidden;
   }
 }
+
+/* =============================================================================
+   ASSET MANAGEMENT COMPONENTS
+   ============================================================================= */
+
+/* Hero image styling */
+.hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+  transition: opacity var(--transition-base);
+  opacity: 0;
+}
+
+.hero__image.asset-loaded {
+  opacity: 1;
+}
+
+/* About image styling */
+.about__image-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+  transition: opacity var(--transition-base);
+  opacity: 0;
+}
+
+.about__image-photo.asset-loaded {
+  opacity: 1;
+}
+
+/* Project screenshot styling */
+.project-card__screenshot {
+  transition: opacity var(--transition-base), transform var(--transition-base);
+  opacity: 0;
+}
+
+.project-card__screenshot.asset-loaded {
+  opacity: 1;
+}
+
+.project-card:hover .project-card__screenshot.asset-loaded {
+  transform: scale(1.05);
+}
+
+/* Loading placeholders */
+.hero__image-placeholder,
+.about__image-placeholder,
+.project-card__image-placeholder {
+  position: relative;
+  background-color: var(--color-gray-100);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.hero__image-placeholder::before,
+.about__image-placeholder::before,
+.project-card__image-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Hide shimmer when image is loaded */
+.hero__image-placeholder:has(.asset-loaded)::before,
+.about__image-placeholder:has(.asset-loaded)::before,
+.project-card__image-placeholder:has(.asset-loaded)::before {
+  display: none;
+}
+
+/* Fallback styling for browsers that don't support :has() */
+.asset-loaded + .shimmer-overlay {
+  display: none;
+}
+
+/* Responsive image optimization */
+.hero__image,
+.about__image-photo,
+.project-card__screenshot {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* WebP support detection fallback */
+.no-webp .hero__image[data-webp],
+.no-webp .about__image-photo[data-webp],
+.no-webp .project-card__screenshot[data-webp] {
+  content: attr(data-fallback);
+}

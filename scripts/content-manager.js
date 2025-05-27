@@ -218,6 +218,9 @@ class ContentManager {
       // Add GitHub stats indicators
       this.addGitHubStatsIndicators(enhancedProjects);
       
+      // Setup asset management for project images
+      this.setupProjectAssets();
+      
     } catch (error) {
       console.error('Error loading GitHub data:', error);
       
@@ -295,10 +298,11 @@ class ContentManager {
                data-repo="${project.github_repo || ''}">
         <div class="project-card__image">
           <div class="project-card__image-placeholder">
-            <img src="${project.image}" 
+            <img data-asset="${project.github_repo || project.id}" 
+                 data-category="projects"
                  alt="${project.title} screenshot" 
                  loading="lazy"
-                 onerror="this.parentElement.innerHTML='<span>Project Screenshot</span>'"
+                 class="project-card__screenshot"
                  style="width: 100%; height: 100%; object-fit: cover;">
           </div>
           ${project.stats ? this.renderProjectStats(project.stats) : ''}
@@ -424,6 +428,41 @@ class ContentManager {
     if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
     if (diffDays < 365) return `${Math.floor(diffDays / 30)} months ago`;
     return `${Math.floor(diffDays / 365)} years ago`;
+  }
+  
+  // Setup asset management for project images
+  setupProjectAssets() {
+    if (typeof window.assetManager !== 'undefined') {
+      const projectImages = document.querySelectorAll('img[data-category="projects"]');
+      
+      projectImages.forEach(img => {
+        const assetName = img.dataset.asset;
+        const category = img.dataset.category;
+        
+        if (window.assetManager && window.assetManager.getAsset) {
+          window.assetManager.setupAssetElement(img, category, assetName);
+        }
+      });
+    }
+    
+    // Also setup hero and about images
+    this.setupProfileAssets();
+  }
+  
+  // Setup profile/hero image assets
+  setupProfileAssets() {
+    if (typeof window.assetManager !== 'undefined') {
+      const profileImages = document.querySelectorAll('img[data-category="images"]');
+      
+      profileImages.forEach(img => {
+        const assetName = img.dataset.asset;
+        const category = img.dataset.category;
+        
+        if (window.assetManager && window.assetManager.getAsset) {
+          window.assetManager.setupAssetElement(img, category, assetName);
+        }
+      });
+    }
   }
   
   // Update meta tags for SEO
