@@ -11,6 +11,14 @@
     <meta name="language" content="EN">
     <meta name="theme-color" content="#6366f1">
     
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://polyfill.io https://www.google-analytics.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: https://endersclarity.github.io https://avatars.githubusercontent.com https://api.github.com; connect-src 'self' https://api.github.com https://netlify.com https://www.google-analytics.com https://polyfill.io; form-action 'self' https://netlify.com; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; upgrade-insecure-requests">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()">
+    
     <!-- Enhanced Open Graph Meta Tags -->
     <meta property="og:title" content="Kaelen Jennings - Full Stack Developer | TypeScript, React, Python">
     <meta property="og:description" content="Portfolio showcasing modern web development projects including WorkoutTrackr fitness app, AI workflow integration, and MERN stack applications. Specializing in fitness tech and full stack development.">
@@ -444,6 +452,7 @@
     </footer>
 
     <!-- Scripts with Performance Optimization -->
+    <script src="scripts/security-headers.js" defer></script>
     <script src="scripts/browser-compatibility.js" defer></script>
     <script src="scripts/performance-optimizer.js" defer></script>
     <script src="scripts/theme-manager.js" defer></script>

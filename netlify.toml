@@ -29,16 +29,21 @@
 [context.branch-deploy]
   command = "npm run build"
 
-# Headers for security and performance
+# Enhanced security and performance headers
 [[headers]]
   for = "/*"
   [headers.values]
-    # Security headers
+    # Enhanced Security headers
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://polyfill.io https://www.google-analytics.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: https://endersclarity.github.io https://avatars.githubusercontent.com https://api.github.com; connect-src 'self' https://api.github.com https://netlify.com https://www.google-analytics.com https://polyfill.io; form-action 'self' https://netlify.com; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; upgrade-insecure-requests"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+    Permissions-Policy = "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()"
+    Cross-Origin-Embedder-Policy = "unsafe-none"
+    Cross-Origin-Opener-Policy = "same-origin-allow-popups"
+    Cross-Origin-Resource-Policy = "cross-origin"
     
     # Performance headers
     X-DNS-Prefetch-Control = "on"
