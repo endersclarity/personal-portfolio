@@ -168,17 +168,22 @@ class ContactForm {
   }
   
   handleSubmit(e) {
-    e.preventDefault();
+    // For Netlify Forms, we only prevent submission if validation fails
+    // Otherwise, let the form submit naturally to Netlify
     
-    const formData = new FormData(this.form);
-    const data = Object.fromEntries(formData);
-    
-    // Validate all fields
     const isValid = this.validateForm();
     
-    if (isValid) {
-      this.submitForm(data);
+    if (!isValid) {
+      e.preventDefault();
+      return;
     }
+    
+    // If validation passes, show loading state but let form submit
+    const submitButton = this.form.querySelector('button[type="submit"]');
+    submitButton.textContent = 'Sending...';
+    submitButton.disabled = true;
+    
+    // Form will submit naturally to Netlify action="/thank-you"
   }
   
   validateForm() {
@@ -242,41 +247,6 @@ class ContactForm {
     field.classList.remove('is-invalid');
   }
   
-  async submitForm(data) {
-    const submitButton = this.form.querySelector('button[type="submit"]');
-    const originalText = submitButton.textContent;
-    
-    try {
-      // Show loading state
-      submitButton.textContent = 'Sending...';
-      submitButton.disabled = true;
-      
-      // Simulate form submission (replace with actual endpoint)
-      await this.mockFormSubmission(data);
-      
-      // Show success message
-      this.showMessage('Message sent successfully!', 'success');
-      this.form.reset();
-      
-    } catch (error) {
-      console.error('Form submission error:', error);
-      this.showMessage('Failed to send message. Please try again.', 'error');
-    } finally {
-      // Restore button state
-      submitButton.textContent = originalText;
-      submitButton.disabled = false;
-    }
-  }
-  
-  mockFormSubmission(data) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        // Simulate successful submission
-        console.log('Form data:', data);
-        resolve();
-      }, 1000);
-    });
-  }
   
   showMessage(message, type = 'info') {
     // Create message element

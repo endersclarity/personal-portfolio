@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thank you for contacting Kaelen Jennings - your message has been received.">
+    <title>Thank You - Kaelen Jennings Portfolio</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/variables.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/animations.css">
+</head>
+<body>
+    <!-- Skip Navigation Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header__content">
+                <div class="header__brand">
+                    <a href="/" class="brand-link" aria-label="Kaelen Jennings Portfolio Home">
+                        <h1 class="brand-name">Kaelen Jennings</h1>
+                    </a>
+                </div>
+                
+                <nav class="nav" role="navigation" aria-label="Main navigation">
+                    <button class="nav__toggle" 
+                            aria-expanded="false" 
+                            aria-controls="nav-menu"
+                            aria-label="Toggle navigation menu">
+                        <span class="nav__toggle-line"></span>
+                        <span class="nav__toggle-line"></span>
+                        <span class="nav__toggle-line"></span>
+                    </button>
+                    
+                    <ul class="nav__menu" id="nav-menu" role="list">
+                        <li class="nav__item">
+                            <a href="/#home" class="nav__link">Home</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="/#about" class="nav__link">About</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="/#projects" class="nav__link">Projects</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="/#skills" class="nav__link">Skills</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="/#contact" class="nav__link">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <section class="thank-you" aria-labelledby="thank-you-heading">
+            <div class="container">
+                <div class="thank-you__content">
+                    <div class="thank-you__icon" aria-hidden="true">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="var(--color-primary)"/>
+                            <path d="M8 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    
+                    <h1 id="thank-you-heading" class="thank-you__title">Thank You!</h1>
+                    
+                    <p class="thank-you__message">
+                        Your message has been successfully sent. I'll get back to you as soon as possible, 
+                        typically within 24-48 hours.
+                    </p>
+                    
+                    <div class="thank-you__details">
+                        <p class="thank-you__detail">
+                            <strong>What happens next?</strong>
+                        </p>
+                        <ul class="thank-you__list">
+                            <li>I'll review your message carefully</li>
+                            <li>You'll receive a response within 24-48 hours</li>
+                            <li>If your inquiry is urgent, I'll prioritize it accordingly</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="thank-you__actions">
+                        <a href="/" class="btn btn--primary">Return to Portfolio</a>
+                        <a href="/#projects" class="btn btn--secondary">View My Work</a>
+                    </div>
+                    
+                    <div class="thank-you__social">
+                        <p class="thank-you__social-text">Connect with me on social media:</p>
+                        <div class="social-links social-links--center">
+                            <a href="https://github.com/endersclarity" 
+                               class="social-link" 
+                               aria-label="GitHub Profile"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                <span>GitHub</span>
+                            </a>
+                            <a href="https://linkedin.com/in/kaelen-jennings" 
+                               class="social-link" 
+                               aria-label="LinkedIn Profile"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                <span>LinkedIn</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__content">
+                <p class="footer__text">
+                    &copy; 2025 Kaelen Jennings. All rights reserved.
+                </p>
+                <p class="footer__text">
+                    Built with HTML5, CSS3, and JavaScript
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="scripts/theme-manager.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>

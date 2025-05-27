@@ -337,7 +337,22 @@
                         </div>
                     </div>
                     
-                    <form class="contact__form" aria-labelledby="contact-form-heading">
+                    <form class="contact__form" 
+                          aria-labelledby="contact-form-heading"
+                          name="contact" 
+                          method="POST" 
+                          data-netlify="true"
+                          data-netlify-honeypot="bot-field"
+                          action="/thank-you">
+                        <input type="hidden" name="form-name" value="contact">
+                        
+                        <!-- Honeypot field for spam protection -->
+                        <div style="display: none;">
+                            <label>Don't fill this out if you're human: 
+                                <input name="bot-field" tabindex="-1" autocomplete="off">
+                            </label>
+                        </div>
+                        
                         <h3 id="contact-form-heading" class="contact__form-title">Send a Message</h3>
                         
                         <div class="form-group">
