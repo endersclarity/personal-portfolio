@@ -50,40 +50,49 @@ class AssetManager {
       fallback: 'assets/images/hero-background-fallback.jpg'
     });
     
-    // Project screenshots
+    // Real Project Screenshots with WebP Support
+    this.registerAsset('projects', 'workout-trackr', {
+      src: 'assets/projects/workout-trackr-screenshot.jpg',
+      alt: 'WorkoutTrackr - TypeScript React Fitness App Screenshot',
+      lazy: true,
+      webp: 'assets/projects/workout-trackr-screenshot.webp'
+    });
+    
+    this.registerAsset('projects', 'ai-tools-workflow', {
+      src: 'assets/projects/ai-workflow-screenshot.jpg', 
+      alt: 'AI Tools Workflow Integration Screenshot',
+      lazy: true,
+      webp: 'assets/projects/ai-workflow-screenshot.webp'
+    });
+    
+    this.registerAsset('projects', 'workout-log-pwa', {
+      src: 'assets/projects/workout-log-screenshot.jpg',
+      alt: 'Workout Log PWA with Recovery Algorithms Screenshot',
+      lazy: true,
+      webp: 'assets/projects/workout-log-screenshot.webp'
+    });
+    
+    this.registerAsset('projects', 'docker-wordpress', {
+      src: 'assets/projects/docker-wordpress-screenshot.jpg',
+      alt: 'Dockerized WordPress Environment Screenshot',
+      lazy: true,
+      webp: 'assets/projects/docker-wordpress-screenshot.webp'
+    });
+    
     this.registerAsset('projects', 'personal-portfolio', {
       src: 'assets/projects/portfolio-screenshot.jpg',
       alt: 'Personal Portfolio Website Screenshot',
       lazy: true,
-      fallback: 'assets/projects/portfolio-placeholder.svg'
+      webp: 'assets/projects/portfolio-screenshot.webp'
     });
     
-    this.registerAsset('projects', 'task-manager', {
-      src: 'assets/projects/task-manager-screenshot.jpg',
-      alt: 'Task Manager Application Screenshot',
-      lazy: true,
-      fallback: 'assets/projects/task-manager-placeholder.svg'
-    });
-    
-    this.registerAsset('projects', 'weather-dashboard', {
-      src: 'assets/projects/weather-dashboard-screenshot.jpg',
-      alt: 'Weather Dashboard Screenshot',
-      lazy: true,
-      fallback: 'assets/projects/weather-placeholder.svg'
-    });
-    
-    this.registerAsset('projects', 'ecommerce-platform', {
-      src: 'assets/projects/ecommerce-screenshot.jpg',
-      alt: 'E-commerce Platform Screenshot',
-      lazy: true,
-      fallback: 'assets/projects/ecommerce-placeholder.svg'
-    });
-    
-    this.registerAsset('projects', 'blog-cms', {
-      src: 'assets/projects/blog-cms-screenshot.jpg',
-      alt: 'Blog CMS Screenshot',
-      lazy: true,
-      fallback: 'assets/projects/blog-placeholder.svg'
+    // Open Graph Image
+    this.registerAsset('images', 'og-image', {
+      src: 'assets/images/portfolio-og-image.jpg',
+      alt: 'Kaelen Jennings Portfolio Open Graph Image',
+      critical: false,
+      lazy: false,
+      webp: 'assets/images/portfolio-og-image.webp'
     });
     
     // Icons
@@ -151,9 +160,13 @@ class AssetManager {
   
   // Get optimized asset URL based on browser support
   getOptimizedAssetUrl(asset) {
-    const originalSrc = asset.src;
+    // Use explicit WebP URL if available and supported
+    if (asset.webp && this.supportedFormats.webp) {
+      return this.resolveAssetUrl(asset.webp);
+    }
     
-    // For JPEG/PNG images, try to serve WebP if supported
+    // Fallback to automatic WebP conversion for JPEG/PNG
+    const originalSrc = asset.src;
     if ((originalSrc.includes('.jpg') || originalSrc.includes('.png')) && this.supportedFormats.webp) {
       const webpSrc = originalSrc.replace(/\.(jpg|jpeg|png)$/i, '.webp');
       return webpSrc;

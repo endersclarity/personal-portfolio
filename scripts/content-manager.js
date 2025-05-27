@@ -16,6 +16,11 @@ class ContentManager {
       this.githubAPI = new GitHubAPI('endersclarity');
     }
     
+    // Initialize Asset Manager
+    if (typeof AssetManager !== 'undefined') {
+      this.assetManager = new AssetManager();
+    }
+    
     await this.loadAllContent();
   }
   
@@ -34,6 +39,11 @@ class ContentManager {
       
       // Enhanced projects with GitHub integration
       await this.populateProjectsContentWithGitHub(projects);
+      
+      // Process assets with lazy loading after content is populated
+      if (this.assetManager) {
+        this.assetManager.processAssets();
+      }
       
       return { portfolio, skills, projects };
     } catch (error) {
