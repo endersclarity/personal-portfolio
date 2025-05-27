@@ -134,9 +134,26 @@
   --container-padding: var(--space-6);
 }
 
-/* Dark Mode Variables (when implemented) */
+/* Dark Mode Variables */
+[data-theme="dark"] {
+  --color-text-primary: var(--color-gray-100);
+  --color-text-secondary: var(--color-gray-300);
+  --color-text-muted: var(--color-gray-400);
+  --color-background: var(--color-gray-900);
+  --color-background-alt: var(--color-gray-800);
+  --color-border: var(--color-gray-700);
+  --color-border-light: var(--color-gray-800);
+  
+  /* Dark mode specific adjustments */
+  --color-primary-light: #1e40af;
+  --shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+}
+
+/* System preference dark mode (when no manual override) */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]) {
     --color-text-primary: var(--color-gray-100);
     --color-text-secondary: var(--color-gray-300);
     --color-text-muted: var(--color-gray-400);
@@ -144,6 +161,11 @@
     --color-background-alt: var(--color-gray-800);
     --color-border: var(--color-gray-700);
     --color-border-light: var(--color-gray-800);
+    
+    --color-primary-light: #1e40af;
+    --shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
   }
 }
 
