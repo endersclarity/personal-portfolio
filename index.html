@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kaelen Jennings - Full Stack Developer. Modern web applications, responsive design, and innovative solutions.">
+    <meta name="keywords" content="web developer, full stack, HTML, CSS, JavaScript, responsive design, portfolio">
+    <meta name="author" content="Kaelen Jennings">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Kaelen Jennings - Full Stack Developer">
+    <meta property="og:description" content="Portfolio showcasing modern web development projects and technical expertise">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://endersclarity.github.io/personal-portfolio">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kaelen Jennings - Full Stack Developer">
+    <meta name="twitter:description" content="Portfolio showcasing modern web development projects and technical expertise">
+    
+    <title>Kaelen Jennings - Full Stack Developer</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/variables.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <!-- Skip Navigation Link for Accessibility -->
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+    
+    <!-- Header with Navigation -->
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header__content">
+                <div class="logo">
+                    <a href="#home" aria-label="Kaelen Jennings - Home">
+                        <span class="logo__text">KJ</span>
+                    </a>
+                </div>
+                
+                <nav class="nav" role="navigation" aria-label="Main navigation">
+                    <button class="nav__toggle" 
+                            aria-label="Toggle mobile menu" 
+                            aria-expanded="false"
+                            aria-controls="nav-menu">
+                        <span class="nav__toggle-line"></span>
+                        <span class="nav__toggle-line"></span>
+                        <span class="nav__toggle-line"></span>
+                    </button>
+                    
+                    <ul class="nav__menu" id="nav-menu" role="menubar">
+                        <li class="nav__item" role="none">
+                            <a href="#home" class="nav__link" role="menuitem">Home</a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="#about" class="nav__link" role="menuitem">About</a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="#projects" class="nav__link" role="menuitem">Projects</a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="#skills" class="nav__link" role="menuitem">Skills</a>
+                        </li>
+                        <li class="nav__item" role="none">
+                            <a href="#contact" class="nav__link" role="menuitem">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        
+        <!-- Hero Section -->
+        <section id="home" class="hero" aria-labelledby="hero-heading">
+            <div class="container">
+                <div class="hero__content">
+                    <h1 id="hero-heading" class="hero__title">
+                        Hi, I'm <span class="hero__name">Kaelen Jennings</span>
+                    </h1>
+                    <p class="hero__subtitle">Full Stack Developer</p>
+                    <p class="hero__description">
+                        I create modern, responsive web applications with clean code and innovative solutions. 
+                        Passionate about user experience and cutting-edge technology.
+                    </p>
+                    <div class="hero__actions">
+                        <a href="#projects" class="btn btn--primary">View My Work</a>
+                        <a href="#contact" class="btn btn--secondary">Get In Touch</a>
+                    </div>
+                </div>
+                <div class="hero__visual" aria-hidden="true">
+                    <div class="hero__image-placeholder">
+                        <!-- Profile image will be added here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about" aria-labelledby="about-heading">
+            <div class="container">
+                <h2 id="about-heading" class="section__title">About Me</h2>
+                <div class="about__content">
+                    <div class="about__text">
+                        <p class="about__paragraph">
+                            I'm a passionate full stack developer with expertise in modern web technologies. 
+                            I enjoy solving complex problems and building applications that make a difference.
+                        </p>
+                        <p class="about__paragraph">
+                            When I'm not coding, you'll find me exploring new technologies, contributing to 
+                            open source projects, or sharing knowledge with the developer community.
+                        </p>
+                        <div class="about__highlights">
+                            <div class="highlight">
+                                <h3 class="highlight__title">Experience</h3>
+                                <p class="highlight__text">5+ years in web development</p>
+                            </div>
+                            <div class="highlight">
+                                <h3 class="highlight__title">Focus</h3>
+                                <p class="highlight__text">Full stack web applications</p>
+                            </div>
+                            <div class="highlight">
+                                <h3 class="highlight__title">Passion</h3>
+                                <p class="highlight__text">Clean code & user experience</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about__image">
+                        <div class="about__image-placeholder">
+                            <!-- About image will be added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects" aria-labelledby="projects-heading">
+            <div class="container">
+                <h2 id="projects-heading" class="section__title">Featured Projects</h2>
+                <p class="section__subtitle">
+                    A showcase of my recent work and technical capabilities
+                </p>
+                
+                <div class="projects__grid" role="list">
+                    <!-- Project cards will be dynamically populated -->
+                    <article class="project-card" role="listitem">
+                        <div class="project-card__image">
+                            <div class="project-card__image-placeholder">
+                                <!-- Project image placeholder -->
+                            </div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Sample Project</h3>
+                            <p class="project-card__description">
+                                This is a placeholder for your actual projects from GitHub. 
+                                Projects will be loaded dynamically.
+                            </p>
+                            <div class="project-card__tech">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                            </div>
+                            <div class="project-card__links">
+                                <a href="#" class="project-link" aria-label="View live demo">
+                                    <span>Live Demo</span>
+                                </a>
+                                <a href="#" class="project-link" aria-label="View source code">
+                                    <span>Source Code</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills" aria-labelledby="skills-heading">
+            <div class="container">
+                <h2 id="skills-heading" class="section__title">Technical Skills</h2>
+                <p class="section__subtitle">
+                    Technologies and tools I work with
+                </p>
+                
+                <div class="skills__categories">
+                    <div class="skill-category">
+                        <h3 class="skill-category__title">Frontend</h3>
+                        <div class="skill-category__items">
+                            <span class="skill-item">HTML5</span>
+                            <span class="skill-item">CSS3</span>
+                            <span class="skill-item">JavaScript</span>
+                            <span class="skill-item">React</span>
+                            <span class="skill-item">Vue.js</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3 class="skill-category__title">Backend</h3>
+                        <div class="skill-category__items">
+                            <span class="skill-item">Node.js</span>
+                            <span class="skill-item">Python</span>
+                            <span class="skill-item">Express</span>
+                            <span class="skill-item">RESTful APIs</span>
+                            <span class="skill-item">Database Design</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3 class="skill-category__title">Tools & Others</h3>
+                        <div class="skill-category__items">
+                            <span class="skill-item">Git</span>
+                            <span class="skill-item">Docker</span>
+                            <span class="skill-item">AWS</span>
+                            <span class="skill-item">Responsive Design</span>
+                            <span class="skill-item">Testing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact" aria-labelledby="contact-heading">
+            <div class="container">
+                <h2 id="contact-heading" class="section__title">Get In Touch</h2>
+                <p class="section__subtitle">
+                    Let's work together on your next project
+                </p>
+                
+                <div class="contact__content">
+                    <div class="contact__info">
+                        <div class="contact__item">
+                            <h3 class="contact__item-title">Email</h3>
+                            <a href="mailto:endersclarity@gmail.com" class="contact__link">
+                                endersclarity@gmail.com
+                            </a>
+                        </div>
+                        
+                        <div class="contact__item">
+                            <h3 class="contact__item-title">Location</h3>
+                            <p class="contact__text">Grass Valley, CA</p>
+                        </div>
+                        
+                        <div class="contact__social">
+                            <h3 class="contact__item-title">Connect</h3>
+                            <div class="social-links">
+                                <a href="https://github.com/endersclarity" 
+                                   class="social-link" 
+                                   aria-label="GitHub Profile"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    <span>GitHub</span>
+                                </a>
+                                <a href="https://linkedin.com/in/kaelen-jennings" 
+                                   class="social-link" 
+                                   aria-label="LinkedIn Profile"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    <span>LinkedIn</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form class="contact__form" aria-labelledby="contact-form-heading">
+                        <h3 id="contact-form-heading" class="contact__form-title">Send a Message</h3>
+                        
+                        <div class="form-group">
+                            <label for="name" class="form-label">Name *</label>
+                            <input type="text" 
+                                   id="name" 
+                                   name="name" 
+                                   class="form-input" 
+                                   required 
+                                   aria-describedby="name-error">
+                            <span id="name-error" class="form-error" role="alert"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email *</label>
+                            <input type="email" 
+                                   id="email" 
+                                   name="email" 
+                                   class="form-input" 
+                                   required 
+                                   aria-describedby="email-error">
+                            <span id="email-error" class="form-error" role="alert"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject *</label>
+                            <input type="text" 
+                                   id="subject" 
+                                   name="subject" 
+                                   class="form-input" 
+                                   required 
+                                   aria-describedby="subject-error">
+                            <span id="subject-error" class="form-error" role="alert"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message *</label>
+                            <textarea id="message" 
+                                      name="message" 
+                                      class="form-textarea" 
+                                      rows="5" 
+                                      required 
+                                      aria-describedby="message-error"></textarea>
+                            <span id="message-error" class="form-error" role="alert"></span>
+                        </div>
+                        
+                        <button type="submit" class="btn btn--primary btn--full-width">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__content">
+                <p class="footer__text">
+                    &copy; 2025 Kaelen Jennings. All rights reserved.
+                </p>
+                <p class="footer__text">
+                    Built with HTML5, CSS3, and JavaScript
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="scripts/main.js"></script>
+</body>
+</html>
