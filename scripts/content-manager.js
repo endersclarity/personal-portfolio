@@ -5,12 +5,18 @@ class ContentManager {
     this.cache = new Map();
     this.loadPromises = new Map();
     this.baseUrl = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '');
+    this.githubAPI = null;
     
     this.init();
   }
   
-  init() {
-    this.loadAllContent();
+  async init() {
+    // Initialize GitHub API
+    if (typeof GitHubAPI !== 'undefined') {
+      this.githubAPI = new GitHubAPI('endersclarity');
+    }
+    
+    await this.loadAllContent();
   }
   
   // Load all content data files
@@ -25,7 +31,9 @@ class ContentManager {
       // Populate content on page load
       this.populatePortfolioContent(portfolio);
       this.populateSkillsContent(skills);
-      this.populateProjectsContent(projects);
+      
+      // Enhanced projects with GitHub integration
+      await this.populateProjectsContentWithGitHub(projects);
       
       return { portfolio, skills, projects };
     } catch (error) {
@@ -181,18 +189,110 @@ class ContentManager {
     });
   }
   
-  // Populate projects content (will be enhanced with GitHub integration)
-  populateProjectsContent(data) {
+  // Enhanced projects content with GitHub integration
+  async populateProjectsContentWithGitHub(projectsData) {
+    if (!projectsData || !projectsData.featured_projects) return;
+    
+    const projectsGrid = document.querySelector('.projects__grid');
+    if (!projectsGrid) return;
+    
+    // Show loading state
+    projectsGrid.innerHTML = '<div class="projects-loading">Loading projects...</div>';
+    
+    try {
+      // Get featured projects from local data
+      const featuredProjects = projectsData.featured_projects.filter(project => project.featured);
+      const githubConfig = projectsData.github_config || {};
+      
+      // Enhance projects with live GitHub data
+      const enhancedProjects = await this.enhanceProjectsWithGitHubData(
+        featuredProjects, 
+        githubConfig
+      );
+      
+      // Render enhanced projects
+      projectsGrid.innerHTML = enhancedProjects.map(project => 
+        this.renderProjectCard(project)
+      ).join('');
+      
+      // Add GitHub stats indicators
+      this.addGitHubStatsIndicators(enhancedProjects);
+      
+    } catch (error) {
+      console.error('Error loading GitHub data:', error);
+      
+      // Fallback to basic project display
+      this.populateProjectsContentFallback(projectsData);
+    }
+  }
+  
+  // Fallback project content population without GitHub integration
+  populateProjectsContentFallback(data) {
     if (!data || !data.featured_projects) return;
     
     const projectsGrid = document.querySelector('.projects__grid');
     if (!projectsGrid) return;
     
-    // Show featured projects only for now
     const featuredProjects = data.featured_projects.filter(project => project.featured);
     
-    projectsGrid.innerHTML = featuredProjects.map(project => `
-      <article class="project-card" data-category="${project.category}">
+    projectsGrid.innerHTML = featuredProjects.map(project => 
+      this.renderProjectCard(project)
+    ).join('');
+  }
+  
+  // Enhance project data with live GitHub information
+  async enhanceProjectsWithGitHubData(projects, githubConfig) {
+    if (!this.githubAPI) {
+      console.warn('GitHub API not available, using fallback data');
+      return projects;
+    }
+    
+    try {
+      // Get GitHub repositories
+      const repos = await this.githubAPI.getRepositories({
+        featured: githubConfig.featured_repos,
+        exclude: githubConfig.exclude_repos
+      });
+      
+      // Create a map of repo names to repo data
+      const repoMap = new Map(repos.map(repo => [repo.name, repo]));
+      
+      // Enhance each project with GitHub data
+      const enhancedProjects = projects.map(project => {
+        const githubData = repoMap.get(project.github_repo);
+        
+        if (githubData) {
+          return {
+            ...project,
+            github_data: githubData,
+            stats: githubData.display_stats,
+            last_updated: githubData.updated_at,
+            primary_language: githubData.primary_language,
+            topics: githubData.topics || [],
+            is_live: true
+          };
+        }
+        
+        return {
+          ...project,
+          is_live: false,
+          fallback_message: githubConfig.fallback_message || 'GitHub data unavailable'
+        };
+      });
+      
+      return enhancedProjects;
+    } catch (error) {
+      console.error('Error enhancing projects with GitHub data:', error);
+      return projects.map(project => ({ ...project, is_live: false }));
+    }
+  }
+  
+  // Render individual project card
+  renderProjectCard(project) {
+    return `
+      <article class="project-card ${project.is_live ? 'project-card--live' : ''}" 
+               data-category="${project.category}"
+               data-repo="${project.github_repo || ''}">
         <div class="project-card__image">
           <div class="project-card__image-placeholder">
             <img src="${project.image}" 
@@ -201,19 +301,42 @@ class ContentManager {
                  onerror="this.parentElement.innerHTML='<span>Project Screenshot</span>'"
                  style="width: 100%; height: 100%; object-fit: cover;">
           </div>
+          ${project.stats ? this.renderProjectStats(project.stats) : ''}
         </div>
         <div class="project-card__content">
-          <h3 class="project-card__title">${project.title}</h3>
+          <div class="project-card__header">
+            <h3 class="project-card__title">${project.title}</h3>
+            ${project.is_live ? '<span class="project-card__live-indicator" title="Live GitHub data">🔴</span>' : ''}
+          </div>
           <p class="project-card__description">${project.description}</p>
+          
+          ${project.primary_language ? `
+            <div class="project-card__language">
+              <span class="language-indicator">
+                <span class="language-color" data-language="${project.primary_language}"></span>
+                ${project.primary_language}
+              </span>
+            </div>
+          ` : ''}
+          
           <div class="project-card__tech">
             ${project.technologies.slice(0, 4).map(tech => 
               `<span class="tech-tag">${tech}</span>`
             ).join('')}
           </div>
+          
+          ${project.topics && project.topics.length > 0 ? `
+            <div class="project-card__topics">
+              ${project.topics.slice(0, 3).map(topic => 
+                `<span class="topic-tag">${topic}</span>`
+              ).join('')}
+            </div>
+          ` : ''}
+          
           <div class="project-card__links">
             ${project.live_url ? `
               <a href="${project.live_url}" 
-                 class="project-link" 
+                 class="project-link project-link--primary" 
                  target="_blank" 
                  rel="noopener noreferrer"
                  aria-label="View ${project.title} live demo">
@@ -222,7 +345,7 @@ class ContentManager {
             ` : ''}
             ${project.github_repo ? `
               <a href="https://github.com/endersclarity/${project.github_repo}" 
-                 class="project-link" 
+                 class="project-link project-link--secondary" 
                  target="_blank" 
                  rel="noopener noreferrer"
                  aria-label="View ${project.title} source code">
@@ -230,9 +353,77 @@ class ContentManager {
               </a>
             ` : ''}
           </div>
+          
+          ${project.last_updated ? `
+            <div class="project-card__meta">
+              <span class="project-meta__updated">
+                Updated ${this.formatRelativeTime(project.last_updated)}
+              </span>
+            </div>
+          ` : ''}
         </div>
       </article>
-    `).join('');
+    `;
+  }
+  
+  // Render project statistics overlay
+  renderProjectStats(stats) {
+    return `
+      <div class="project-card__stats">
+        ${stats.stars > 0 ? `<span class="stat-item" title="${stats.stars} stars">⭐ ${stats.stars}</span>` : ''}
+        ${stats.forks > 0 ? `<span class="stat-item" title="${stats.forks} forks">🍴 ${stats.forks}</span>` : ''}
+        ${stats.issues > 0 ? `<span class="stat-item" title="${stats.issues} open issues">📋 ${stats.issues}</span>` : ''}
+      </div>
+    `;
+  }
+  
+  // Add GitHub stats indicators and styling
+  addGitHubStatsIndicators(projects) {
+    // Add language color indicators
+    const languageColors = {
+      'JavaScript': '#f1e05a',
+      'TypeScript': '#2b7489',
+      'HTML': '#e34c26',
+      'CSS': '#563d7c',
+      'Python': '#3572A5',
+      'Java': '#b07219',
+      'C++': '#f34b7d',
+      'C#': '#239120',
+      'PHP': '#4F5D95',
+      'Ruby': '#701516',
+      'Go': '#00ADD8',
+      'Rust': '#dea584',
+      'Swift': '#ffac45',
+      'Kotlin': '#F18E33'
+    };
+    
+    projects.forEach(project => {
+      if (project.primary_language) {
+        const colorElements = document.querySelectorAll(
+          `[data-repo="${project.github_repo}"] .language-color[data-language="${project.primary_language}"]`
+        );
+        
+        colorElements.forEach(element => {
+          const color = languageColors[project.primary_language] || '#888';
+          element.style.backgroundColor = color;
+        });
+      }
+    });
+  }
+  
+  // Format relative time for last updated
+  formatRelativeTime(dateString) {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffTime = Math.abs(now - date);
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    
+    if (diffDays === 0) return 'today';
+    if (diffDays === 1) return 'yesterday';
+    if (diffDays < 7) return `${diffDays} days ago`;
+    if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
+    if (diffDays < 365) return `${Math.floor(diffDays / 30)} months ago`;
+    return `${Math.floor(diffDays / 365)} years ago`;
   }
   
   // Update meta tags for SEO
