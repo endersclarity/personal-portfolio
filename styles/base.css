@@ -47,6 +47,9 @@ h1, h2, h3, h4, h5, h6 {
   line-height: var(--line-height-tight);
   color: var(--color-text-primary);
   margin-bottom: var(--space-4);
+  /* Fallback for browsers without CSS custom properties */
+  color: #1e293b;
+  margin-bottom: 1rem;
 }
 
 h1 {

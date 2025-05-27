@@ -1,0 +1,440 @@
+/* Browser Compatibility Styles */
+/* Polyfills and fallbacks for older browsers */
+
+/* =============================================================================
+   CSS CUSTOM PROPERTIES FALLBACKS
+   ============================================================================= */
+
+/* Fallback colors for browsers without CSS custom properties support */
+.no-cssCustomProperties {
+  --color-primary: #3b82f6;
+  --color-primary-dark: #2563eb;
+  --color-primary-light: #93c5fd;
+  --color-background: #ffffff;
+  --color-text-primary: #1e293b;
+  --color-text-secondary: #64748b;
+}
+
+.no-cssCustomProperties .btn--primary {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+.no-cssCustomProperties .btn--primary:hover {
+  background-color: #2563eb;
+}
+
+.no-cssCustomProperties .btn--secondary {
+  background-color: transparent;
+  color: #3b82f6;
+  border: 2px solid #3b82f6;
+}
+
+/* =============================================================================
+   CSS GRID FALLBACKS
+   ============================================================================= */
+
+/* Flexbox fallback for CSS Grid */
+.no-cssGrid .projects__grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -0.5rem;
+}
+
+.no-cssGrid .project-card {
+  flex: 1 1 300px;
+  min-width: 300px;
+  max-width: 400px;
+  margin: 0.5rem;
+}
+
+.no-cssGrid .skills__categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.no-cssGrid .skill-category {
+  flex: 1 1 250px;
+  min-width: 250px;
+}
+
+.no-cssGrid .contact__content {
+  display: block;
+}
+
+.no-cssGrid .contact__info,
+.no-cssGrid .contact__form {
+  margin-bottom: 2rem;
+}
+
+/* =============================================================================
+   FLEXBOX FALLBACKS
+   ============================================================================= */
+
+/* Inline-block fallback for flexbox */
+.no-cssFlexbox .nav__menu {
+  text-align: center;
+}
+
+.no-cssFlexbox .nav__item {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 1rem;
+}
+
+.no-cssFlexbox .hero__actions {
+  text-align: center;
+}
+
+.no-cssFlexbox .btn {
+  display: inline-block;
+  margin: 0.5rem;
+}
+
+.no-cssFlexbox .social-links {
+  text-align: center;
+}
+
+.no-cssFlexbox .social-link {
+  display: inline-block;
+  margin: 0.5rem;
+}
+
+/* =============================================================================
+   INTERNET EXPLORER SPECIFIC FIXES
+   ============================================================================= */
+
+/* IE 11 and below fixes */
+.browser-ie .hero {
+  background: #f8fafc;
+  padding: 60px 0;
+}
+
+.browser-ie .hero__content {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.browser-ie .hero__title {
+  font-size: 36px;
+  color: #1e293b;
+  margin-bottom: 16px;
+}
+
+.browser-ie .hero__subtitle {
+  font-size: 20px;
+  color: #64748b;
+  margin-bottom: 16px;
+}
+
+.browser-ie .btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #3b82f6;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  margin: 8px;
+}
+
+.browser-ie .btn--secondary {
+  background: transparent;
+  color: #3b82f6;
+  border: 2px solid #3b82f6;
+}
+
+.browser-ie .project-card {
+  border: 1px solid #e2e8f0;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: white;
+}
+
+.browser-ie .project-card__title {
+  font-size: 20px;
+  color: #1e293b;
+  margin-bottom: 12px;
+}
+
+.browser-ie .project-card__description {
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.browser-ie .form-input,
+.browser-ie .form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* =============================================================================
+   SAFARI SPECIFIC FIXES
+   ============================================================================= */
+
+/* Safari-specific optimizations */
+.browser-safari {
+  -webkit-overflow-scrolling: touch;
+}
+
+.browser-safari .header {
+  background-color: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.browser-safari .btn {
+  -webkit-appearance: none;
+  -webkit-border-radius: 8px;
+}
+
+.browser-safari .form-input,
+.browser-safari .form-textarea {
+  -webkit-appearance: none;
+  -webkit-border-radius: 8px;
+}
+
+/* Safari gap fallback for flexbox */
+.browser-safari .projects__grid {
+  margin: -0.5rem;
+}
+
+.browser-safari .project-card {
+  margin: 0.5rem;
+}
+
+/* =============================================================================
+   FIREFOX SPECIFIC FIXES
+   ============================================================================= */
+
+/* Firefox-specific optimizations */
+.browser-firefox {
+  scroll-behavior: smooth;
+}
+
+.browser-firefox .btn {
+  -moz-appearance: none;
+}
+
+.browser-firefox .form-input,
+.browser-firefox .form-textarea {
+  -moz-appearance: none;
+}
+
+/* Firefox animation performance */
+.browser-firefox * {
+  will-change: auto;
+}
+
+/* =============================================================================
+   EDGE SPECIFIC FIXES
+   ============================================================================= */
+
+/* Edge legacy fixes */
+.browser-edge .hero__image {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+.browser-edge .project-card__image img {
+  object-fit: cover;
+  width: 100%;
+}
+
+/* =============================================================================
+   MOBILE BROWSER FIXES
+   ============================================================================= */
+
+/* Mobile-specific optimizations */
+.mobile {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile .btn {
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
+}
+
+.mobile input,
+.mobile textarea {
+  font-size: 16px; /* Prevent zoom on iOS */
+}
+
+.mobile .nav__menu {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* =============================================================================
+   REDUCED MOTION SUPPORT
+   ============================================================================= */
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .reduced-motion *,
+  .reduced-motion *::before,
+  .reduced-motion *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =============================================================================
+   HIGH CONTRAST MODE SUPPORT
+   ============================================================================= */
+
+/* High contrast mode adjustments */
+@media (prefers-contrast: high) {
+  .btn {
+    border: 2px solid;
+  }
+  
+  .project-card {
+    border: 2px solid;
+  }
+  
+  .form-input,
+  .form-textarea {
+    border: 2px solid;
+  }
+}
+
+/* =============================================================================
+   PRINT STYLES
+   ============================================================================= */
+
+/* Print-friendly styles */
+@media print {
+  .nav,
+  .hero__actions,
+  .contact__form,
+  .footer {
+    display: none !important;
+  }
+  
+  .hero {
+    page-break-inside: avoid;
+  }
+  
+  .project-card {
+    page-break-inside: avoid;
+    margin-bottom: 20px;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+}
+
+/* =============================================================================
+   LEGACY BROWSER WARNING
+   ============================================================================= */
+
+/* Browser upgrade notice for very old browsers */
+.legacy-browser .browser-warning {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fef3c7;
+  color: #92400e;
+  text-align: center;
+  padding: 10px;
+  z-index: 9999;
+  font-family: Arial, sans-serif;
+  border-bottom: 2px solid #f59e0b;
+}
+
+.legacy-browser .browser-warning a {
+  color: #92400e;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* =============================================================================
+   POLYFILL LOADING STATES
+   ============================================================================= */
+
+/* Loading states while polyfills load */
+.polyfills-loading .projects__grid,
+.polyfills-loading .skills__categories {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.polyfills-loaded .projects__grid,
+.polyfills-loaded .skills__categories {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.3s ease;
+}
+
+/* =============================================================================
+   FEATURE DETECTION CLASSES
+   ============================================================================= */
+
+/* WebP support fallbacks */
+.no-webp .hero__image[data-webp],
+.no-webp .about__image-photo[data-webp],
+.no-webp .project-card__screenshot[data-webp] {
+  content: attr(data-fallback);
+}
+
+/* Intersection Observer fallback */
+.no-intersectionObserver img[loading="lazy"] {
+  loading: auto;
+}
+
+/* Service Worker fallback */
+.no-serviceWorker .offline-indicator {
+  display: none;
+}
+
+/* =============================================================================
+   CONNECTION-BASED OPTIMIZATIONS
+   ============================================================================= */
+
+/* Slow connection optimizations */
+.connection-slow-2g *,
+.connection-2g * {
+  animation-duration: 0.01s !important;
+  animation-delay: 0.01s !important;
+  transition-duration: 0.01s !important;
+}
+
+.connection-slow-2g .hero__visual,
+.connection-2g .hero__visual {
+  display: none;
+}
+
+.connection-slow-2g .project-card__image,
+.connection-2g .project-card__image {
+  background: #f3f4f6;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.connection-slow-2g .project-card__image::before,
+.connection-2g .project-card__image::before {
+  content: "Image loading...";
+  color: #6b7280;
+  font-size: 14px;
+}
