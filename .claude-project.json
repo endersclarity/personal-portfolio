@@ -1,0 +1,83 @@
+{
+  "project_name": "Personal Portfolio Website",
+  "project_type": "web_development",
+  "version": "0.1.0",
+  "description": "Modern, responsive personal portfolio website showcasing projects, skills, and professional experience",
+  
+  "load_sequence": [
+    "/home/ender/.claude/CLAUDE.md",
+    "./CLAUDE.md",
+    "./system_manifest.md",
+    "./activeContext.md",
+    "./project_roadmap.md",
+    "./userProfile.md",
+    "./memory-bank/frontend_module.md",
+    "./memory-bank/components_module.md",
+    "./memory-bank/content_module.md",
+    "./memory-bank/styling_module.md",
+    "./memory-bank/implementation_plan_html_structure.md"
+  ],
+  
+  "file_mappings": {
+    "system_manifest": "./system_manifest.md",
+    "active_context": "./activeContext.md",
+    "project_roadmap": "./project_roadmap.md",
+    "user_profile": "./userProfile.md",
+    "project_config": "./CLAUDE.md",
+    "memory_bank": "./memory-bank/",
+    "modules": {
+      "frontend": "./memory-bank/frontend_module.md",
+      "components": "./memory-bank/components_module.md",
+      "content": "./memory-bank/content_module.md",
+      "styling": "./memory-bank/styling_module.md"
+    },
+    "implementation_plans": {
+      "html_structure": "./memory-bank/implementation_plan_html_structure.md"
+    },
+    "tasks": "./memory-bank/task_*.md"
+  },
+  
+  "development": {
+    "build_commands": [
+      "# No build process needed for vanilla HTML/CSS/JS",
+      "# Files can be opened directly in browser for development",
+      "# Production: minify CSS/JS and optimize images"
+    ],
+    "test_commands": [
+      "# HTML validation with W3C validator",
+      "# CSS validation with W3C CSS validator", 
+      "# Accessibility testing with axe-core",
+      "# Cross-browser testing manually"
+    ],
+    "lint_commands": [
+      "# HTML: use htmlhint or similar",
+      "# CSS: use stylelint",
+      "# JS: use eslint"
+    ]
+  },
+  
+  "technology_stack": {
+    "frontend": ["HTML5", "CSS3", "JavaScript (ES6+)"],
+    "tools": ["Git", "VS Code", "Browser DevTools"],
+    "deployment": ["GitHub Pages", "Netlify", "Vercel"]
+  },
+  
+  "project_structure": {
+    "src": {
+      "html": ["index.html"],
+      "css": ["styles/", "components/"],
+      "js": ["scripts/", "components/"],
+      "assets": ["images/", "fonts/", "icons/"]
+    },
+    "docs": ["README.md", "CHANGELOG.md"],
+    "data": ["portfolio.json", "projects.json", "skills.json"]
+  },
+  
+  "metadata": {
+    "created": "2025-05-26T23:54:00Z",
+    "last_updated": "2025-05-26T23:54:00Z",
+    "last_load": null,
+    "architect_version": "1.0.0",
+    "crct_hdta_version": "1.0.0"
+  }
+}
