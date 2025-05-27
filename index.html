@@ -104,6 +104,13 @@
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="KJ Portfolio">
+    <link rel="apple-touch-icon" href="assets/favicon.svg">
+    
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles/variables.css">
     <link rel="stylesheet" href="styles/base.css">
@@ -111,9 +118,20 @@
     <link rel="stylesheet" href="styles/components.css">
     <link rel="stylesheet" href="styles/animations.css">
     
-    <!-- Preload critical resources -->
+    <!-- Critical Performance Optimizations -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://api.github.com">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="styles/variables.css" as="style">
+    <link rel="preload" href="styles/base.css" as="style">
+    <link rel="preload" href="styles/layout.css" as="style">
+    <link rel="preload" href="scripts/main.js" as="script">
+    
+    <!-- Preload critical images -->
+    <link rel="preload" href="assets/images/profile-placeholder.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="assets/favicon.svg" as="image" type="image/svg+xml">
 </head>
 <body>
     <!-- Skip Navigation Link for Accessibility -->
@@ -187,7 +205,9 @@
                              data-category="images" 
                              alt="Kaelen Jennings - Professional Profile Photo"
                              class="hero__image"
-                             loading="eager">
+                             loading="eager"
+                             fetchpriority="high"
+                             decoding="async">
                     </div>
                 </div>
             </div>
@@ -422,11 +442,12 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="scripts/theme-manager.js"></script>
-    <script src="scripts/asset-manager.js"></script>
-    <script src="scripts/github-api.js"></script>
-    <script src="scripts/content-manager.js"></script>
-    <script src="scripts/main.js"></script>
+    <!-- Scripts with Performance Optimization -->
+    <script src="scripts/performance-optimizer.js" defer></script>
+    <script src="scripts/theme-manager.js" defer></script>
+    <script src="scripts/asset-manager.js" defer></script>
+    <script src="scripts/github-api.js" defer></script>
+    <script src="scripts/content-manager.js" defer></script>
+    <script src="scripts/main.js" defer></script>
 </body>
 </html>

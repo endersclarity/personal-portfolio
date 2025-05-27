@@ -1,10 +1,34 @@
 User-agent: *
 Allow: /
 
+# Allow all crawlers to access all content
+Allow: /assets/
+Allow: /styles/
+Allow: /scripts/
+Allow: /data/
+
 # Sitemap location
 Sitemap: https://endersclarity.github.io/personal-portfolio/sitemap.xml
 
-# Disallow certain files
-Disallow: /test-*.html
-Disallow: /memory-bank/
-Disallow: /*.md$
+# Crawl delay (optional, helps with server load)
+Crawl-delay: 1
+
+# Specific instructions for major crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Block access to development files and temporary resources
+Disallow: /test-*
+Disallow: /*.log
+Disallow: /*.tmp
+Disallow: /node_modules/
+Disallow: /.git/

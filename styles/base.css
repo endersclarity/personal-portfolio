@@ -20,6 +20,10 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
+  /* Performance optimizations */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
 }
 
 body {
@@ -32,6 +36,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  /* Performance optimizations */
+  font-display: swap;
+  contain: layout style paint;
 }
 
 /* Typography Reset and Base Styles */
@@ -139,6 +146,15 @@ svg {
 
 img {
   border-style: none;
+  /* Performance optimizations for images */
+  loading: lazy;
+  decoding: async;
+  /* Prevent layout shift */
+  aspect-ratio: attr(width) / attr(height);
+  /* Optimize rendering */
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
 }
 
 /* Table Styles */
