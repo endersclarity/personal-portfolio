@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://endersclarity.github.io/personal-portfolio/sitemap.xml
+
+# Disallow certain files
+Disallow: /test-*.html
+Disallow: /memory-bank/
+Disallow: /*.md$

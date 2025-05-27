@@ -26,25 +26,18 @@
           "description": "ES6+, async/await, DOM manipulation, and modern JavaScript patterns"
         },
         {
-          "name": "React",
-          "proficiency": 85,
-          "years": 3,
-          "category": "framework",
-          "description": "Hooks, Context API, state management, and component optimization"
-        },
-        {
-          "name": "Vue.js",
-          "proficiency": 80,
-          "years": 2,
-          "category": "framework",
-          "description": "Composition API, Vuex, Vue Router, and single-file components"
-        },
-        {
           "name": "TypeScript",
-          "proficiency": 75,
-          "years": 2,
+          "proficiency": 88,
+          "years": 4,
           "category": "programming",
           "description": "Type safety, interfaces, generics, and advanced TypeScript patterns"
+        },
+        {
+          "name": "React",
+          "proficiency": 90,
+          "years": 4,
+          "category": "framework",
+          "description": "Hooks, Context API, state management, component optimization, and performance tuning"
         },
         {
           "name": "Sass/SCSS",
@@ -75,10 +68,10 @@
         },
         {
           "name": "Python",
-          "proficiency": 78,
-          "years": 3,
+          "proficiency": 85,
+          "years": 4,
           "category": "programming",
-          "description": "Django, Flask, data processing, and automation scripts"
+          "description": "Scientific computing, data analysis, PWA development, and automation scripts"
         },
         {
           "name": "Express.js",
@@ -130,10 +123,10 @@
         },
         {
           "name": "Docker",
-          "proficiency": 75,
-          "years": 2,
+          "proficiency": 82,
+          "years": 3,
           "category": "containerization",
-          "description": "Containerization, Docker Compose, and deployment strategies"
+          "description": "Containerization, Docker Compose, WordPress environments, and deployment strategies"
         },
         {
           "name": "AWS",
