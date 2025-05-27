@@ -1,0 +1,145 @@
+# Netlify Configuration
+# Alternative deployment option with enhanced features
+
+[build]
+  # Build settings
+  publish = "."
+  command = "npm run build"
+  
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "8"
+
+# Production context
+[context.production]
+  command = "npm run build"
+  
+[context.production.environment]
+  NODE_ENV = "production"
+  HUGO_ENV = "production"
+
+# Deploy preview context (for PRs)
+[context.deploy-preview]
+  command = "npm run build"
+  
+[context.deploy-preview.environment]
+  NODE_ENV = "staging"
+
+# Branch deploy context
+[context.branch-deploy]
+  command = "npm run build"
+
+# Headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Security headers
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+    
+    # Performance headers
+    X-DNS-Prefetch-Control = "on"
+    
+    # Cache control for static assets
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Specific headers for HTML files
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Content-Security-Policy = "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; script-src 'self' 'unsafe-inline'; connect-src 'self' https://api.github.com https://netlify.com; form-action 'self' https://netlify.com"
+
+# Headers for assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Headers for JavaScript files
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "application/javascript; charset=utf-8"
+
+# Headers for CSS files
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "text/css; charset=utf-8"
+
+# Headers for images
+[[headers]]
+  for = "/*.{jpg,jpeg,png,gif,svg,webp,ico}"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Headers for fonts
+[[headers]]
+  for = "/*.{woff,woff2,ttf,eot}"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Access-Control-Allow-Origin = "*"
+
+# Headers for manifest and service worker
+[[headers]]
+  for = "/manifest.json"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Content-Type = "application/manifest+json; charset=utf-8"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Content-Type = "application/javascript; charset=utf-8"
+
+# Redirects and rewrites
+[[redirects]]
+  from = "/portfolio"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+
+# SPA fallback (in case of future client-side routing)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  conditions = {Role = ["admin"], Country = ["US"]}
+
+# Form handling
+[[forms]]
+  name = "contact"
+  
+# Edge functions (for advanced features)
+[[edge_functions]]
+  function = "performance-monitor"
+  path = "/*"
+
+# Plugin configuration
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+  
+  [plugins.inputs]
+    output_path = "lighthouse"
+    
+[[plugins]]
+  package = "netlify-plugin-cache"
+  
+  [plugins.inputs.cache_dirs]
+    cache_dirs = ["node_modules", ".cache"]
+
+# Environment variables (example - set in Netlify UI)
+# GOOGLE_ANALYTICS_ID = "GA_MEASUREMENT_ID"
+# CONTACT_EMAIL = "contact@example.com"
+# GITHUB_TOKEN = "github_pat_token"

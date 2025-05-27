@@ -1,0 +1,97 @@
+{
+  "name": "kaelen-jennings-portfolio",
+  "version": "1.0.0",
+  "description": "Professional portfolio website showcasing full stack development expertise in TypeScript, React, Python, and fitness technology solutions.",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 8000 || npx serve .",
+    "build": "npm run optimize:images && npm run validate:html && npm run test:lighthouse",
+    "optimize:images": "node scripts/optimize-images.js",
+    "validate:html": "html-validate index.html thank-you.html",
+    "test:lighthouse": "lhci autorun || echo 'Lighthouse CI not configured'",
+    "test": "npm run validate:html && npm run test:accessibility",
+    "test:accessibility": "axe index.html || echo 'Axe accessibility testing not configured'",
+    "deploy": "node scripts/deploy.js github-pages",
+    "deploy:netlify": "node scripts/deploy.js netlify",
+    "deploy:vercel": "node scripts/deploy.js vercel",
+    "deploy:production": "NODE_ENV=production node scripts/deploy.js github-pages --production",
+    "start": "npm run dev",
+    "lint": "echo 'No linting configured for vanilla HTML/CSS/JS project'",
+    "format": "prettier --write \"**/*.{html,css,js,json,md}\"",
+    "preview": "npm run build && npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/endersclarity/personal-portfolio.git"
+  },
+  "keywords": [
+    "portfolio",
+    "full-stack-developer",
+    "typescript",
+    "react",
+    "python",
+    "mern-stack",
+    "fitness-tech",
+    "web-development",
+    "pwa",
+    "responsive-design"
+  ],
+  "author": {
+    "name": "Kaelen Jennings",
+    "email": "contact@kaelenjennings.dev",
+    "url": "https://endersclarity.github.io/personal-portfolio"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/endersclarity/personal-portfolio/issues"
+  },
+  "homepage": "https://endersclarity.github.io/personal-portfolio",
+  "devDependencies": {
+    "@lhci/cli": "^0.12.0",
+    "axe-core": "^4.8.0",
+    "html-validate": "^8.7.0",
+    "prettier": "^3.1.0",
+    "serve": "^14.2.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "lighthouse": {
+    "ci": {
+      "collect": {
+        "url": [
+          "http://localhost:8000/",
+          "http://localhost:8000/thank-you.html"
+        ],
+        "numberOfRuns": 3
+      },
+      "assert": {
+        "assertions": {
+          "categories:performance": ["error", {"minScore": 0.9}],
+          "categories:accessibility": ["error", {"minScore": 0.9}],
+          "categories:best-practices": ["error", {"minScore": 0.9}],
+          "categories:seo": ["error", {"minScore": 0.9}],
+          "categories:pwa": ["warn", {"minScore": 0.8}]
+        }
+      }
+    }
+  },
+  "pwa": {
+    "name": "Kaelen Jennings Portfolio",
+    "shortName": "KJ Portfolio",
+    "description": "Professional portfolio showcasing full stack development projects and expertise",
+    "themeColor": "#3b82f6",
+    "backgroundColor": "#ffffff",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "startUrl": "/"
+  }
+}
