@@ -1,0 +1,14 @@
+name: kaelen-portfolio-demo
+region: nyc
+static_sites:
+- build_command: ""  # No build command needed for static HTML
+  catchall_document: index.html
+  environment_slug: html
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: EndersClarity/personal-portfolio
+  name: portfolio
+  routes:
+  - path: /
+  source_dir: /
