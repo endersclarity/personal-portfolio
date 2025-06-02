@@ -2,6 +2,8 @@
 
 A modern, responsive personal portfolio website built with vanilla HTML5, CSS3, and JavaScript. Showcases projects, skills, and professional experience with clean design and optimal performance.
 
+**Latest Update**: Enhanced with comprehensive GitHub integration and detailed project workflows.
+
 ## 🚀 Features
 
 - **Responsive Design**: Mobile-first approach ensuring optimal experience across all devices
