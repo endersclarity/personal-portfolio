@@ -1,0 +1,27 @@
+name: Deploy to DigitalOcean App Platform
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # Allows manual trigger
+
+permissions:
+  contents: read
+
+jobs:
+  deploy-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Deploy to DigitalOcean App Platform
+        uses: digitalocean/app_action/deploy@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+          app_name: kaelen-portfolio-demo  # Replace with your actual app name
+          
+      - name: Deployment Success
+        run: |
+          echo "✅ Deployment completed successfully!"
+          echo "🌐 Your enhanced portfolio with GitHub integration is now live!"
