@@ -2,7 +2,7 @@
 
 A modern, responsive personal portfolio website built with vanilla HTML5, CSS3, and JavaScript. Showcases projects, skills, and professional experience with clean design and optimal performance.
 
-**Latest Update**: Enhanced with comprehensive GitHub integration and detailed project workflows.
+**Latest Update**: Enhanced with comprehensive GitHub integration and detailed project workflows. ✅ **DigitalOcean Auto-Deploy Active**
 
 ## 🚀 Features
 
