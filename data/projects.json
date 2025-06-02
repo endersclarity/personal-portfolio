@@ -1,363 +1,377 @@
 {
   "featured_projects": [
     {
-      "id": "workout-trackr",
-      "title": "WorkoutTrackr",
-      "description": "Professional fitness tracking app with TypeScript, React, and Express. Features workout logging, exercise library, progress analytics, and muscle recovery tracking.",
-      "long_description": "A comprehensive fitness application built with modern TypeScript and React. Provides advanced workout tracking capabilities including exercise libraries, progress analytics, and scientific muscle recovery algorithms. Features a clean, responsive interface with real-time data visualization and comprehensive reporting systems.",
-      "status": "active",
-      "featured": true,
-      "github_repo": "WorkoutTrackr",
-      "live_url": null,
-      "demo_url": null,
+      "id": "fitforge",
+      "title": "FitForge",
+      "subtitle": "AI-Powered Fitness Platform",
+      "description": "A comprehensive fitness application that combines artificial intelligence with scientific exercise data to create personalized workout experiences. Think of it as having a personal trainer that learns from your performance and adapts your workouts accordingly.",
+      "long_description": "Advanced fitness tracking platform featuring 180+ exercise database with professional muscle targeting data, real-time workout sessions, and AI-powered progressive overload algorithms. Built as both web and desktop application for maximum accessibility.",
       "technologies": [
         "TypeScript",
         "React",
-        "Express",
-        "Node.js",
-        "MongoDB",
-        "Fitness Analytics",
-        "Progressive Web App"
+        "PostgreSQL", 
+        "Electron",
+        "Supabase",
+        "Drizzle ORM",
+        "Chart.js",
+        "AI Algorithms"
       ],
-      "category": "Fitness Technology",
+      "category": "Full-Stack Application",
+      "status": "Complete",
+      "year": "2024",
+      "links": {
+        "github": "https://github.com/endersclarity/FitForge",
+        "live": null,
+        "demo": null
+      },
+      "workflow": [
+        "Concept & Research: Analyzed existing fitness apps and identified gaps in AI-powered personalization",
+        "Database Design: Created comprehensive schema with 180+ exercises, muscle groups, and movement patterns",
+        "AI Integration: Implemented progressive overload algorithms and workout optimization logic",
+        "Frontend Development: Built responsive React interface with real-time workout tracking",
+        "Backend Architecture: Developed Express.js API with WebSocket support for live sessions",
+        "Desktop App Creation: Packaged as Electron app for offline usage and better performance",
+        "Testing & Deployment: Comprehensive testing suite and deployment to multiple platforms"
+      ],
+      "skills_demonstrated": [
+        "Full-stack TypeScript development",
+        "AI algorithm implementation", 
+        "Database design",
+        "Desktop app development",
+        "Real-time applications",
+        "Fitness domain expertise"
+      ],
+      "image": "assets/projects/fitforge-screenshot.webp",
+      "featured": true,
+      "priority": 1
     },
     {
-      "id": "ai-tools-workflow",
-      "title": "AI Tools Workflow Integration",
-      "description": "Seamless workflow integration between Figma, Stitch, Replit, and Google AI Studio for automated design-to-deployment pipelines.",
-      "long_description": "Advanced workflow automation system that bridges design and development tools. Integrates Figma design files with development environments through AI-powered automation, streamlining the design-to-deployment pipeline with intelligent code generation and deployment orchestration.",
-      "status": "active",
-      "featured": true,
-      "github_repo": "ai-tools-workflow-integration",
-      "live_url": null,
-      "demo_url": null,
+      "id": "ai-real-estate-crm",
+      "title": "AI-Enhanced Real Estate CRM",
+      "subtitle": "Intelligent Client Management System",
+      "description": "A sophisticated customer relationship management system specifically designed for real estate professionals. It automatically processes emails, extracts important information, and uses AI to help agents manage their client relationships more effectively.",
+      "long_description": "AI-Enhanced Real Estate CRM with intelligent email processing, automated data extraction, and comprehensive client management. Features AI-powered chatbot, PDF form automation, and 177-field CRM schema for real estate professionals.",
       "technologies": [
-        "AI Integration",
-        "Workflow Automation",
+        "HTML5",
+        "CSS3", 
+        "JavaScript",
+        "AI Processing",
+        "PDF Automation",
+        "Email Integration",
+        "Natural Language Processing",
+        "Database Management"
+      ],
+      "category": "AI-Powered CRM",
+      "status": "Complete",
+      "year": "2024",
+      "links": {
+        "github": "https://github.com/endersclarity/ai-enhanced-real-estate-crm",
+        "live": null,
+        "demo": null
+      },
+      "workflow": [
+        "Industry Research: Studied real estate workflows and identified pain points in client management",
+        "AI Model Selection: Evaluated and integrated appropriate AI tools for text processing and data extraction",
+        "Database Schema Design: Created comprehensive 177-field schema covering all real estate scenarios",
+        "Email Processing System: Built automated email parsing and categorization system",
+        "AI Chatbot Development: Implemented intelligent assistant for client communication",
+        "PDF Form Automation: Created system to automatically populate real estate documents",
+        "Testing & Optimization: Extensive testing with real estate professionals and workflow optimization"
+      ],
+      "skills_demonstrated": [
+        "AI integration",
+        "Business process automation",
+        "CRM development",
+        "Email processing",
+        "PDF manipulation",
+        "Domain expertise in real estate"
+      ],
+      "image": "assets/projects/real-estate-crm-screenshot.webp",
+      "featured": true,
+      "priority": 2
+    },
+    {
+      "id": "jobbot",
+      "title": "JobBot (Business Intelligence Engine)",
+      "subtitle": "Automated Opportunity Discovery Platform",
+      "description": "An intelligent automation platform that started as a job search tool but evolved into a comprehensive business opportunity discovery system. It finds companies that need digital solutions, analyzes their problems, and automates personalized outreach.",
+      "long_description": "Automated job search and application management system with intelligent tracking and integrity monitoring. Evolved into a business intelligence platform for opportunity creation and client acquisition using advanced web scraping and machine learning.",
+      "technologies": [
+        "FastAPI",
+        "PostgreSQL",
+        "Selenium",
+        "Machine Learning",
+        "Redis",
+        "Celery",
+        "Python",
+        "BeautifulSoup"
+      ],
+      "category": "Business Intelligence",
+      "status": "Complete",
+      "year": "2024",
+      "links": {
+        "github": "https://github.com/endersclarity/jobbot",
+        "live": null,
+        "demo": null
+      },
+      "workflow": [
+        "Problem Identification: Recognized inefficiencies in traditional job searching and business development",
+        "Architecture Design: Created scalable FastAPI backend with PostgreSQL database",
+        "Web Scraping System: Built intelligent scrapers using Selenium and BeautifulSoup",
+        "Data Analysis Engine: Implemented algorithms to score opportunities and predict success rates",
+        "Automation Framework: Created systems for automated outreach and follow-up",
+        "Integrity Monitoring: Built tracking systems to maintain ethical business practices",
+        "Evolution to BIE: Expanded scope from job search to comprehensive business intelligence"
+      ],
+      "skills_demonstrated": [
+        "Python backend development",
+        "Web scraping",
+        "Data analysis",
+        "Automation",
+        "Business intelligence",
+        "API design",
+        "Database optimization"
+      ],
+      "image": "assets/projects/jobbot-screenshot.webp",
+      "featured": true,
+      "priority": 3
+    },
+    {
+      "id": "ai-workflow-integration",
+      "title": "AI Tools Workflow Integration",
+      "subtitle": "Design-to-Deployment Pipeline",
+      "description": "A sophisticated automation system that connects different design and development tools to create a seamless workflow from initial design concepts to deployed applications. It's like having a digital assembly line for software development.",
+      "long_description": "Seamless workflow integration between Figma, Stitch, Replit, and Google AI Studio for automated design-to-deployment pipelines. Features API orchestration, AI-powered code generation, and comprehensive error handling.",
+      "technologies": [
+        "TypeScript",
         "Figma API",
         "Google AI Studio",
-        "Design-to-Code"
+        "Replit Integration",
+        "Workflow Orchestration",
+        "API Integration",
+        "AI Code Generation"
       ],
-      "category": "AI & Automation",
-    },
-    {
-      "id": "workout-log-pwa",
-      "title": "Workout Log PWA",
-      "description": "Data-driven PWA for workout tracking with scientific muscle recovery algorithms and ABC rotation optimization.",
-      "long_description": "Progressive Web Application focused on scientific approach to fitness tracking. Implements advanced muscle recovery algorithms and workout rotation optimization to maximize training efficiency. Features offline capability, data synchronization, and comprehensive analytics.",
-      "status": "active", 
+      "category": "Workflow Automation",
+      "status": "Complete", 
+      "year": "2024",
+      "links": {
+        "github": "https://github.com/endersclarity/ai-tools-workflow-integration",
+        "live": null,
+        "demo": null
+      },
+      "workflow": [
+        "Tool Analysis: Researched capabilities and APIs of Figma, Stitch, Replit, and Google AI Studio",
+        "Integration Architecture: Designed system to connect disparate tools with unified workflow",
+        "API Development: Built robust connectors for each tool's API",
+        "Workflow Engine: Created orchestration system to manage multi-step processes",
+        "AI Integration: Implemented AI-powered code generation from design specifications",
+        "Error Handling: Built comprehensive error handling and recovery systems",
+        "Documentation & Testing: Created comprehensive documentation and stress testing protocols"
+      ],
+      "skills_demonstrated": [
+        "API integration",
+        "Workflow automation",
+        "AI implementation",
+        "System architecture",
+        "TypeScript development",
+        "DevOps practices"
+      ],
+      "image": "assets/projects/ai-workflow-screenshot.webp",
       "featured": true,
-      "github_repo": "workout-log",
-      "live_url": null,
-      "demo_url": null,
-      "technologies": [
-        "Python",
-        "Progressive Web App",
-        "Data Science",
-        "Recovery Algorithms",
-        "Offline Capability"
-      ],
-      "category": "Fitness Technology",
+      "priority": 4
     },
     {
-      "id": "docker-wordpress",
-      "title": "Dockerized WordPress Environment",
-      "description": "WordPress development environment with Docker containerization for streamlined development and deployment workflows.",
-      "long_description": "Professional WordPress development setup using Docker containers for consistent development environments. Includes automated deployment pipelines, development/staging/production configurations, and streamlined workflow for WordPress development teams.",
-      "status": "active",
-      "featured": false,
-      "github_repo": "docker-wordpress",
-      "live_url": null,
-      "demo_url": null,
+      "id": "workouttrackr",
+      "title": "WorkoutTrackr",
+      "subtitle": "Professional Fitness Analytics",
+      "description": "A professional-grade fitness application that provides comprehensive workout tracking with scientific approach to muscle recovery and progress monitoring. Designed for serious fitness enthusiasts who want detailed analytics about their training.",
+      "long_description": "Professional fitness tracking app with TypeScript, React, and Express. Features workout logging, exercise library, progress analytics, and muscle recovery tracking with scientific algorithms for optimal training progression.",
       "technologies": [
-        "PHP",
-        "Docker",
-        "WordPress",
-        "DevOps",
-        "Container Orchestration"
+        "React",
+        "TypeScript",
+        "Express.js",
+        "Neon Database",
+        "Radix UI",
+        "React Query",
+        "Drizzle ORM",
+        "PostgreSQL"
       ],
-      "category": "DevOps & Infrastructure",
+      "category": "Full-Stack Application",
+      "status": "Complete",
+      "year": "2024",
+      "links": {
+        "github": "https://github.com/endersclarity/WorkoutTrackr",
+        "live": null,
+        "demo": null
+      },
+      "workflow": [
+        "Requirements Analysis: Studied fitness tracking needs and existing app limitations",
+        "Database Design: Created comprehensive schema for exercises, workouts, and progress tracking",
+        "Component Architecture: Built reusable React components with TypeScript for reliability",
+        "API Development: Created RESTful API with Express.js for data management",
+        "Analytics Implementation: Developed algorithms for progress tracking and muscle recovery",
+        "UI/UX Design: Implemented professional interface using Radix UI components",
+        "Testing & Optimization: Performance optimization and comprehensive testing protocols"
+      ],
+      "skills_demonstrated": [
+        "Full-stack TypeScript development",
+        "Fitness domain knowledge",
+        "Data analytics",
+        "Component architecture",
+        "API design",
+        "Performance optimization"
+      ],
+      "image": "assets/projects/workout-trackr-screenshot.webp",
+      "featured": true,
+      "priority": 5
     },
     {
-      "id": "personal-portfolio",
+      "id": "portfolio-website",
       "title": "Personal Portfolio Website",
-      "description": "Modern, responsive portfolio website built with vanilla HTML5, CSS3, and JavaScript. Features dynamic GitHub integration, smooth animations, and accessibility-first design.",
-      "long_description": "A comprehensive portfolio website showcasing technical skills and projects. Built from scratch using semantic HTML5, custom CSS with design tokens, and vanilla JavaScript for optimal performance. Features include dynamic GitHub API integration, responsive mobile-first design, smooth scroll navigation, and WCAG 2.1 AA accessibility compliance.",
-      "status": "in_development",
-      "featured": false,
-      "github_repo": "personal-portfolio",
-      "live_url": "https://endersclarity.github.io/personal-portfolio",
-      "demo_url": null,
+      "subtitle": "Modern Responsive Portfolio",
+      "description": "This very website you're viewing! A modern, responsive portfolio built with vanilla HTML5, CSS3, and JavaScript, featuring advanced performance optimization, accessibility compliance, and comprehensive SEO implementation.",
+      "long_description": "Production-ready portfolio website with zero-risk parallel development workflow, comprehensive security framework, and Lighthouse 90+ scores across all categories. Features lazy loading, WebP optimization, and integration validation.",
       "technologies": [
         "HTML5",
         "CSS3",
-        "JavaScript",
-        "GitHub API",
-        "Responsive Design",
-        "Accessibility"
+        "Vanilla JavaScript", 
+        "Progressive Web App",
+        "Service Workers",
+        "Lighthouse CI",
+        "WebP Optimization",
+        "SEO"
       ],
-      "category": "Web Development",
-      "image": "assets/projects/portfolio-screenshot.jpg",
-      "gallery": [
-        "assets/projects/portfolio-desktop.jpg",
-        "assets/projects/portfolio-mobile.jpg",
-        "assets/projects/portfolio-projects.jpg"
+      "category": "Frontend Showcase",
+      "status": "Complete",
+      "year": "2024",
+      "links": {
+        "github": "https://github.com/endersclarity/personal-portfolio",
+        "live": "https://kaelen-portfolio-demo-mzedb.ondigitalocean.app",
+        "demo": "https://kaelen-portfolio-demo-mzedb.ondigitalocean.app"
+      },
+      "workflow": [
+        "Strategic Planning: Used architect and taskmaster AI tools for comprehensive project scaffolding",
+        "Parallel Development: Executed zero-risk parallel workstream coordination across SEO, performance, and forms",
+        "Performance Optimization: Implemented lazy loading, WebP conversion, and Core Web Vitals monitoring",
+        "Security Implementation: Comprehensive CSP headers, HSTS, and security audit framework",
+        "Quality Assurance: Integration validation suite ensuring 90+ Lighthouse scores across all categories",
+        "Multi-Platform Deployment: Automated deployment to GitHub Pages, Netlify, and DigitalOcean",
+        "AI Integration: Complete strategic-to-tactical AI agent workflow for intelligent development management"
       ],
-      "features": [
-        "Responsive mobile-first design",
-        "Dynamic GitHub API integration",
-        "Smooth scroll navigation",
-        "Contact form with validation",
-        "Performance optimized (90+ Lighthouse)",
-        "WCAG 2.1 AA accessibility compliant"
+      "skills_demonstrated": [
+        "Frontend development mastery",
+        "Performance optimization",
+        "Accessibility compliance",
+        "SEO implementation", 
+        "Security best practices",
+        "AI-assisted development workflow"
       ],
-      "challenges": [
-        "Creating a design system from scratch",
-        "Implementing smooth animations without affecting performance",
-        "Ensuring cross-browser compatibility",
-        "Optimizing for both mobile and desktop experiences"
-      ],
-      "learned": [
-        "Advanced CSS Grid and Flexbox techniques",
-        "JavaScript intersection observer for scroll animations",
-        "Web accessibility best practices",
-        "Performance optimization strategies"
-      ]
-    },
-    {
-      "id": "task-manager-app",
-      "title": "Task Manager Application",
-      "description": "Full-stack task management application with real-time collaboration features, built using React, Node.js, and MongoDB.",
-      "long_description": "A comprehensive task management solution designed for teams and individuals. Features real-time collaboration, drag-and-drop task organization, deadline tracking, and team member assignment. Built with modern web technologies and focusing on user experience and performance.",
-      "status": "completed",
+      "image": "assets/projects/portfolio-screenshot.webp",
       "featured": true,
-      "github_repo": "task-manager-app",
-      "live_url": "https://task-manager-demo.netlify.app",
-      "demo_url": "https://task-manager-demo.netlify.app/demo",
-      "technologies": [
-        "React",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "Socket.io",
-        "JWT Authentication",
-        "Material-UI"
-      ],
-      "category": "Full Stack",
-      "image": "assets/projects/task-manager-screenshot.jpg",
-      "gallery": [
-        "assets/projects/task-manager-dashboard.jpg",
-        "assets/projects/task-manager-board.jpg",
-        "assets/projects/task-manager-mobile.jpg"
-      ],
-      "features": [
-        "Real-time collaboration with Socket.io",
-        "Drag-and-drop task organization",
-        "Team member management",
-        "Deadline tracking and notifications",
-        "Progress analytics and reporting",
-        "Mobile-responsive design"
-      ],
-      "challenges": [
-        "Implementing real-time synchronization across multiple users",
-        "Optimizing database queries for large datasets",
-        "Creating intuitive drag-and-drop interactions",
-        "Managing complex state across multiple components"
-      ],
-      "learned": [
-        "Real-time web application architecture",
-        "Advanced React state management patterns",
-        "Database optimization techniques",
-        "WebSocket implementation and scaling"
-      ]
+      "priority": 6
+    }
+  ],
+  "additional_projects": [
+    {
+      "id": "blog-cms",
+      "title": "Personal Blog CMS",
+      "subtitle": "Content Management System",
+      "description": "Custom-built content management system for personal blogging with markdown support and responsive design.",
+      "technologies": ["Node.js", "Express", "MongoDB", "EJS"],
+      "category": "Web Development",
+      "status": "Complete",
+      "year": "2023",
+      "links": {
+        "github": "#",
+        "live": null,
+        "demo": null
+      },
+      "image": "assets/projects/blog-cms-screenshot.webp",
+      "featured": false
     },
     {
       "id": "weather-dashboard",
       "title": "Weather Dashboard",
-      "description": "Interactive weather application with location-based forecasts, historical data visualization, and customizable widgets.",
-      "long_description": "A modern weather dashboard that provides comprehensive weather information with beautiful data visualizations. Features include current conditions, 7-day forecasts, interactive maps, historical weather data, and customizable dashboard widgets. Built with a focus on data visualization and user experience.",
-      "status": "completed",
-      "featured": true,
-      "github_repo": "weather-dashboard",
-      "live_url": "https://weather-dashboard-kj.netlify.app",
-      "demo_url": null,
-      "technologies": [
-        "Vue.js",
-        "Chart.js",
-        "OpenWeatherMap API",
-        "Geolocation API",
-        "CSS Grid",
-        "Local Storage",
-        "Progressive Web App"
-      ],
-      "category": "Frontend",
-      "image": "assets/projects/weather-dashboard-screenshot.jpg",
-      "gallery": [
-        "assets/projects/weather-main.jpg",
-        "assets/projects/weather-charts.jpg",
-        "assets/projects/weather-mobile.jpg"
-      ],
-      "features": [
-        "Current weather conditions and forecasts",
-        "Interactive weather maps",
-        "Historical data visualization",
-        "Location-based automatic updates",
-        "Customizable dashboard widgets",
-        "Offline capability with PWA features"
-      ],
-      "challenges": [
-        "Creating responsive data visualizations",
-        "Handling multiple API integrations",
-        "Implementing efficient data caching strategies",
-        "Designing intuitive user interface for complex data"
-      ],
-      "learned": [
-        "Advanced data visualization techniques",
-        "Progressive Web App development",
-        "API rate limiting and caching strategies",
-        "Chart.js library mastery"
-      ]
+      "subtitle": "Real-time Weather Application",
+      "description": "Interactive weather dashboard with real-time data, forecasts, and location-based services using modern APIs.",
+      "technologies": ["Vue.js", "Weather API", "Chart.js", "CSS Grid"],
+      "category": "API Integration",
+      "status": "Complete",
+      "year": "2023",
+      "links": {
+        "github": "#",
+        "live": null,
+        "demo": null
+      },
+      "image": "assets/projects/weather-dashboard-screenshot.webp",
+      "featured": false
     },
     {
-      "id": "ecommerce-platform",
+      "id": "task-manager",
+      "title": "Task Management App",
+      "subtitle": "Productivity Application",
+      "description": "Full-featured task management application with user authentication, categories, and progress tracking.",
+      "technologies": ["React", "Firebase", "Material-UI", "PWA"],
+      "category": "Productivity",
+      "status": "Complete",
+      "year": "2023",
+      "links": {
+        "github": "#",
+        "live": null,
+        "demo": null
+      },
+      "image": "assets/projects/task-manager-screenshot.webp",
+      "featured": false
+    },
+    {
+      "id": "ecommerce-site",
       "title": "E-commerce Platform",
-      "description": "Full-featured e-commerce solution with payment processing, inventory management, and admin dashboard.",
-      "long_description": "A complete e-commerce platform designed for small to medium businesses. Includes product catalog management, shopping cart functionality, secure payment processing, order tracking, and comprehensive admin dashboard. Built with scalability and security as primary concerns.",
-      "status": "completed",
-      "featured": false,
-      "github_repo": "ecommerce-platform",
-      "live_url": "https://ecommerce-demo-kj.herokuapp.com",
-      "demo_url": "https://ecommerce-demo-kj.herokuapp.com/demo",
-      "technologies": [
-        "React",
-        "Redux",
-        "Node.js",
-        "PostgreSQL",
-        "Stripe API",
-        "JWT Authentication",
-        "AWS S3",
-        "Heroku"
-      ],
-      "category": "Full Stack",
-      "image": "assets/projects/ecommerce-screenshot.jpg",
-      "gallery": [
-        "assets/projects/ecommerce-home.jpg",
-        "assets/projects/ecommerce-product.jpg",
-        "assets/projects/ecommerce-admin.jpg"
-      ],
-      "features": [
-        "Complete product catalog management",
-        "Shopping cart and checkout process",
-        "Secure payment processing with Stripe",
-        "Order tracking and history",
-        "Admin dashboard with analytics",
-        "Image upload and management"
-      ],
-      "challenges": [
-        "Implementing secure payment processing",
-        "Managing complex state with Redux",
-        "Optimizing database performance",
-        "Ensuring data security and validation"
-      ],
-      "learned": [
-        "E-commerce architecture patterns",
-        "Payment gateway integration",
-        "Advanced Redux state management",
-        "Database design for complex relationships"
-      ]
+      "subtitle": "Online Shopping Experience",
+      "description": "Modern e-commerce platform with cart functionality, payment integration, and responsive design.",
+      "technologies": ["Next.js", "Stripe", "PostgreSQL", "Tailwind CSS"],
+      "category": "E-commerce",
+      "status": "In Development",
+      "year": "2024",
+      "links": {
+        "github": "#",
+        "live": null,
+        "demo": null
+      },
+      "image": "assets/projects/ecommerce-screenshot.webp",
+      "featured": false
     },
     {
-      "id": "blog-cms",
-      "title": "Blog Content Management System",
-      "description": "Custom CMS for blog management with markdown support, SEO optimization, and multi-author capabilities.",
-      "long_description": "A powerful content management system designed specifically for bloggers and content creators. Features include markdown editor with live preview, SEO optimization tools, multi-author support, comment system, and analytics integration. Built with content creators' workflow in mind.",
-      "status": "completed",
-      "featured": false,
-      "github_repo": "blog-cms",
-      "live_url": "https://blog-cms-demo.vercel.app",
-      "demo_url": null,
-      "technologies": [
-        "Next.js",
-        "TypeScript",
-        "Prisma",
-        "PostgreSQL",
-        "NextAuth.js",
-        "Tailwind CSS",
-        "MDX",
-        "Vercel"
-      ],
-      "category": "Full Stack",
-      "image": "assets/projects/blog-cms-screenshot.jpg",
-      "gallery": [
-        "assets/projects/blog-cms-editor.jpg",
-        "assets/projects/blog-cms-dashboard.jpg",
-        "assets/projects/blog-cms-frontend.jpg"
-      ],
-      "features": [
-        "Rich markdown editor with live preview",
-        "SEO optimization tools",
-        "Multi-author support and permissions",
-        "Comment system with moderation",
-        "Analytics and performance tracking",
-        "Responsive admin interface"
-      ],
-      "challenges": [
-        "Building a rich text editor experience",
-        "Implementing complex user permissions",
-        "Optimizing for SEO and performance",
-        "Creating intuitive content workflow"
-      ],
-      "learned": [
-        "Next.js full-stack development",
-        "TypeScript in complex applications",
-        "Content management architecture",
-        "SEO optimization techniques"
-      ]
+      "id": "docker-wordpress",
+      "title": "Docker WordPress Setup",
+      "subtitle": "Containerized CMS Environment",
+      "description": "Fully containerized WordPress development environment with custom themes and optimized performance.",
+      "technologies": ["Docker", "WordPress", "MySQL", "Nginx"],
+      "category": "DevOps",
+      "status": "Complete",
+      "year": "2023",
+      "links": {
+        "github": "#",
+        "live": null,
+        "demo": null
+      },
+      "image": "assets/projects/docker-wordpress-screenshot.webp",
+      "featured": false
     }
   ],
-  "project_categories": [
-    "All",
-    "Web Development",
-    "Full Stack",
-    "Frontend",
-    "Backend",
-    "Mobile",
-    "API"
-  ],
-  "technologies_used": [
-    "HTML5",
-    "CSS3",
-    "JavaScript",
-    "TypeScript",
-    "React",
-    "Vue.js",
-    "Next.js",
-    "Node.js",
-    "Express.js",
-    "MongoDB",
-    "PostgreSQL",
-    "GraphQL",
-    "RESTful APIs",
-    "AWS",
-    "Docker",
-    "Git"
-  ],
-  "github_config": {
-    "username": "endersclarity",
-    "featured_repos": [
-      "personal-portfolio",
-      "task-manager-app",
-      "weather-dashboard",
-      "ecommerce-platform",
-      "blog-cms"
-    ],
-    "exclude_repos": [
-      "endersclarity",
-      "config-files",
-      "learning-resources",
-      "archived-projects"
-    ],
-    "api_cache_duration": 3600,
-    "fallback_message": "GitHub data temporarily unavailable. Please check back later."
+  "project_stats": {
+    "total_projects": 11,
+    "featured_projects": 6,
+    "technologies_used": 35,
+    "years_active": "2023-2024",
+    "github_repos": "12+",
+    "live_deployments": 1
+  },
+  "technology_categories": {
+    "Frontend": ["React", "TypeScript", "Vue.js", "HTML5", "CSS3", "JavaScript"],
+    "Backend": ["Node.js", "Express.js", "FastAPI", "Python"],
+    "Databases": ["PostgreSQL", "MongoDB", "Supabase", "Neon", "Redis"], 
+    "AI/ML": ["Google AI Studio", "Machine Learning", "Natural Language Processing"],
+    "DevOps": ["Docker", "Electron", "Git", "GitHub Actions"],
+    "Specialized": ["Web Scraping", "Email Processing", "PDF Automation", "Real-time Applications"]
   }
 }
