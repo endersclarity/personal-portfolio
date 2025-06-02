@@ -46,15 +46,25 @@
     <meta name="msapplication-config" content="browserconfig.xml">
     <link rel="canonical" href="https://endersclarity.github.io/personal-portfolio/">
     
-    <!-- Structured Data (JSON-LD) -->
+    <!-- Enhanced Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
+      "@type": ["Person", "WebSite"],
       "name": "Kaelen Jennings",
       "jobTitle": "Full Stack Developer",
-      "description": "Full Stack Developer specializing in TypeScript, React, Python, and MERN stack development with focus on fitness tech applications",
+      "description": "Full Stack Developer specializing in TypeScript, React, Python, and MERN stack development with focus on fitness tech applications and modern web solutions",
       "url": "https://endersclarity.github.io/personal-portfolio",
+      "mainEntityOfPage": "https://endersclarity.github.io/personal-portfolio",
+      "image": "https://endersclarity.github.io/personal-portfolio/assets/images/portfolio-og-image.jpg",
+      "email": "endersclarity@gmail.com",
+      "telephone": "209-304-3395",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Grass Valley",
+        "addressRegion": "CA",
+        "addressCountry": "US"
+      },
       "sameAs": [
         "https://github.com/endersclarity",
         "https://linkedin.com/in/kaelen-jennings"
@@ -71,10 +81,13 @@
         "Node.js",
         "Express.js",
         "MongoDB",
+        "PostgreSQL",
         "Docker",
         "Fitness Technology",
         "Progressive Web Apps",
-        "AI Integration"
+        "AI Integration",
+        "MERN Stack",
+        "Full Stack Development"
       ],
       "hasOccupation": {
         "@type": "Occupation",

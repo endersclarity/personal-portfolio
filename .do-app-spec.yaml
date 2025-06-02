@@ -1,0 +1,32 @@
+name: kaelen-portfolio-demo
+region: nyc1
+static_sites:
+- name: portfolio-static
+  source_dir: /
+  github:
+    repo: endersclarity/personal-portfolio
+    branch: main
+  output_dir: /
+  index_document: index.html
+  error_document: index.html
+  routes:
+  - path: /
+  cors:
+    allow_origins:
+    - exact: https://kaelen-portfolio-demo-mzedb.ondigitalocean.app
+    - exact: https://endersclarity.github.io
+    allow_methods:
+    - GET
+    - POST
+    - PUT
+    - PATCH
+    - DELETE
+    - OPTIONS
+    allow_headers:
+    - Content-Type
+    - Authorization
+  envs:
+  - key: NODE_ENV
+    value: production
+  - key: ENVIRONMENT
+    value: digitalocean

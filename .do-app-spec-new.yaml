@@ -1,0 +1,29 @@
+name: kaelen-jennings-portfolio
+region: nyc1
+static_sites:
+- name: portfolio-site
+  source_dir: /
+  github:
+    repo: endersclarity/personal-portfolio
+    branch: feature/phase-4-production-deployment
+    deploy_on_push: true
+  index_document: index.html
+  error_document: index.html
+  routes:
+  - path: /
+  cors:
+    allow_origins:
+    - exact: "*"
+    allow_methods:
+    - GET
+    - POST
+    - PUT
+    - PATCH
+    - DELETE
+    - OPTIONS
+    allow_headers:
+    - Content-Type
+    - Authorization
+  envs:
+  - key: NODE_ENV
+    value: production
