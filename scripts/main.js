@@ -978,6 +978,196 @@ class GitHubAnalysis {
 }
 
 // =============================================================================
+// GITHUB REPOSITORIES SHOWCASE
+// =============================================================================
+
+class GitHubRepositories {
+  constructor() {
+    this.github = new GitHubAPI();
+    this.repositories = [];
+    this.container = document.getElementById('repositories-grid');
+    
+    // Repository data with employer-focused descriptions
+    this.repositoryData = {
+      'jobbot': {
+        problemSolved: 'Transforms traditional job searching into strategic business opportunity discovery',
+        description: 'Automated business intelligence platform that identifies potential clients, analyzes their tech stack, and generates personalized outreach strategies. Instead of applying to jobs, it finds companies that need your specific skills.',
+        technologies: ['Python', 'FastAPI', 'PostgreSQL', 'Redis', 'Docker', 'pytest'],
+        keyFeatures: ['Company discovery and analysis', 'Tech stack identification', 'Automated opportunity scoring', 'Proof-of-concept generation']
+      },
+      'ai-enhanced-real-estate-crm': {
+        problemSolved: 'Streamlines real estate client management with intelligent automation',
+        description: 'Comprehensive CRM system featuring AI-powered email processing, automated document handling, and natural language database queries. Designed specifically for real estate professionals managing complex client workflows.',
+        technologies: ['Flask', 'Python', 'SQLite/PostgreSQL', 'Google Gemini AI', 'PDF processing'],
+        keyFeatures: ['AI email processing', 'Natural language queries', 'Automated PDF forms', 'MLS integration']
+      },
+      'FitForge': {
+        problemSolved: 'Provides professional-grade fitness tracking with intelligent muscle targeting',
+        description: 'AI-powered fitness platform with comprehensive exercise database, real-time workout tracking, and progressive overload algorithms. Built with modern TypeScript and React for optimal performance.',
+        technologies: ['TypeScript', 'React', 'PostgreSQL', 'Node.js', 'Modern UI/UX'],
+        keyFeatures: ['180+ exercise database', 'Real-time tracking', 'AI recommendations', 'Recovery algorithms']
+      },
+      'WorkoutTrackr': {
+        problemSolved: 'Professional fitness tracking with comprehensive analytics and insights',
+        description: 'Data-driven fitness application featuring advanced progress analytics, muscle recovery tracking, and scientific workout principles. Demonstrates strong TypeScript and React development skills.',
+        technologies: ['TypeScript', 'React', 'Express.js', 'Analytics'],
+        keyFeatures: ['Progress analytics', 'Recovery tracking', 'Data visualization', 'Scientific algorithms']
+      },
+      'ai-tools-workflow-integration': {
+        problemSolved: 'Creates automated design-to-deployment pipelines for modern development',
+        description: 'Seamless workflow integration platform connecting Figma, Stitch, Replit, and Google AI Studio. Automates the entire development pipeline from design to deployment.',
+        technologies: ['TypeScript', 'Figma API', 'Workflow automation', 'AI integration'],
+        keyFeatures: ['Multi-platform integration', 'Automated workflows', 'Template system', 'Error handling']
+      },
+      'personal-portfolio': {
+        problemSolved: 'Professional web presence with modern design and optimal performance',
+        description: 'Modern, responsive portfolio website showcasing technical skills and projects. Features accessibility compliance, performance optimization, and clean architecture.',
+        technologies: ['HTML5', 'CSS3', 'JavaScript ES6+', 'Responsive design'],
+        keyFeatures: ['Mobile-first design', 'WCAG 2.1 AA compliance', 'Lighthouse 90+ scores', 'Modern CSS Grid']
+      },
+      'workout-log': {
+        problemSolved: 'Scientific approach to fitness tracking with advanced recovery algorithms',
+        description: 'Data-driven Progressive Web App applying scientific principles to workout tracking. Features intelligent muscle recovery algorithms and meaningful feedback loops.',
+        technologies: ['Python', 'PWA', 'Scientific algorithms', 'Data visualization'],
+        keyFeatures: ['Scientific recovery algorithms', 'ABC rotation optimization', 'Data processing', 'Feedback systems']
+      },
+      'docker-wordpress': {
+        problemSolved: 'Streamlined WordPress development with containerized environment',
+        description: 'Containerized WordPress development setup for rapid deployment and consistent development environments. Demonstrates DevOps and containerization skills.',
+        technologies: ['Docker', 'WordPress', 'PHP', 'Containerization'],
+        keyFeatures: ['Docker containerization', 'Environment automation', 'Configuration management', 'Scalable deployment']
+      }
+    };
+    
+    this.init();
+  }
+  
+  async init() {
+    if (!this.container) {
+      console.warn('Repositories container not found');
+      return;
+    }
+    
+    try {
+      this.showLoading();
+      await this.fetchRepositories();
+      this.renderRepositories();
+    } catch (error) {
+      console.error('Failed to load repositories:', error);
+      this.showError();
+    }
+  }
+  
+  showLoading() {
+    this.container.innerHTML = '<div class="repositories-loading">Loading repositories...</div>';
+  }
+  
+  showError() {
+    this.container.innerHTML = '<div class="repositories-loading">Unable to load repositories. Please try again later.</div>';
+  }
+  
+  async fetchRepositories() {
+    this.repositories = await this.github.getRepositories({
+      sort: 'updated',
+      per_page: 20,
+      exclude: ['endersclarity.github.io']
+    });
+    
+    // Filter to only include repositories with our detailed descriptions
+    this.repositories = this.repositories.filter(repo => 
+      this.repositoryData.hasOwnProperty(repo.name)
+    );
+  }
+  
+  renderRepositories() {
+    if (!this.repositories.length) {
+      this.container.innerHTML = '<div class="repositories-loading">No repositories available at this time.</div>';
+      return;
+    }
+    
+    const repositoriesHTML = this.repositories.map(repo => this.createRepositoryCard(repo)).join('');
+    this.container.innerHTML = repositoriesHTML;
+  }
+  
+  createRepositoryCard(repo) {
+    const data = this.repositoryData[repo.name];
+    if (!data) return '';
+    
+    const languageColor = this.getLanguageColor(repo.language);
+    const techTags = data.technologies.map(tech => 
+      `<span class="repository-card__tech-tag">${tech}</span>`
+    ).join('');
+    
+    return `
+      <article class="repository-card" role="listitem">
+        <header class="repository-card__header">
+          <h3 class="repository-card__title">
+            <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">
+              ${this.formatRepositoryName(repo.name)}
+            </a>
+          </h3>
+          ${repo.language ? `<span class="repository-card__language" style="background-color: ${languageColor}">${repo.language}</span>` : ''}
+        </header>
+        
+        <div class="repository-card__problem">${data.problemSolved}</div>
+        <p class="repository-card__description">${data.description}</p>
+        
+        <div class="repository-card__tech">
+          ${techTags}
+        </div>
+        
+        <footer class="repository-card__footer">
+          <a href="${repo.html_url}" 
+             class="repository-card__link" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             aria-label="View ${repo.name} on GitHub">
+            View on GitHub →
+          </a>
+          <div class="repository-card__stats">
+            ${repo.stargazers_count > 0 ? `<span class="repository-card__stat">★ ${repo.stargazers_count}</span>` : ''}
+            ${repo.forks_count > 0 ? `<span class="repository-card__stat">⑂ ${repo.forks_count}</span>` : ''}
+            <span class="repository-card__stat">Updated ${this.formatDate(repo.updated_at)}</span>
+          </div>
+        </footer>
+      </article>
+    `;
+  }
+  
+  formatRepositoryName(name) {
+    // Convert kebab-case to Title Case
+    return name
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  }
+  
+  getLanguageColor(language) {
+    const colors = {
+      'Python': '#3776ab',
+      'TypeScript': '#3178c6',
+      'JavaScript': '#f7df1e',
+      'HTML': '#e34f26',
+      'PHP': '#777bb4',
+      'CSS': '#1572b6'
+    };
+    return colors[language] || '#6366f1';
+  }
+  
+  formatDate(dateString) {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffTime = Math.abs(now - date);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    if (diffDays < 7) return `${diffDays}d ago`;
+    if (diffDays < 30) return `${Math.ceil(diffDays / 7)}w ago`;
+    if (diffDays < 365) return `${Math.ceil(diffDays / 30)}mo ago`;
+    return `${Math.ceil(diffDays / 365)}y ago`;
+  }
+}
+
+// =============================================================================
 // INITIALIZATION
 // =============================================================================
 
@@ -994,6 +1184,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize GitHub analysis for about section
   if (window.GitHubAPI) {
     new GitHubAnalysis();
+    new GitHubRepositories();
   }
   
   // Add smooth reveal to hero section
