@@ -1,22 +1,22 @@
 {
   "personal": {
     "name": "Kaelen Jennings",
-    "title": "Full Stack Developer",
+    "title": "Business Problem Solver & Full Stack Developer",
     "location": "Grass Valley, CA",
     "email": "endersclarity@gmail.com",
     "phone": "209-304-3395",
     "bio": {
-      "short": "Passionate full stack developer with expertise in modern web technologies, focused on creating innovative solutions and exceptional user experiences.",
+      "short": "I build systems that solve real business problems. Full-stack developer specializing in AI-powered automation, workflow optimization, and industry-specific applications that directly impact your bottom line.",
       "long": [
-        "I'm a passionate full stack developer with over 5 years of experience building modern web applications. I specialize in creating clean, efficient code and delivering exceptional user experiences that make a real impact.",
-        "My journey in technology is driven by curiosity and a love for problem-solving. I enjoy working with cutting-edge technologies and frameworks, always staying current with industry best practices and emerging trends.",
-        "When I'm not coding, you'll find me exploring new technologies, contributing to open source projects, or sharing knowledge with the developer community. I believe in continuous learning and the power of collaboration to create amazing things."
+        "I don't just write code - I solve business problems. My focus is identifying pain points in your operations and building custom systems that eliminate inefficiencies, automate repetitive tasks, and unlock new revenue opportunities.",
+        "My approach starts with understanding your business needs, not the technology. Whether it's reducing administrative overhead by 60% with AI-powered CRMs, creating automated business intelligence systems, or building industry-specific applications, I deliver solutions that show measurable ROI.",
+        "I've successfully built systems for real estate professionals, fitness industries, and business development teams. Each project demonstrates my ability to combine technical expertise with deep business understanding to create tools that actually solve problems."
       ]
     },
     "taglines": [
-      "Building the future, one line of code at a time",
-      "Where innovation meets implementation",
-      "Crafting digital experiences that matter"
+      "I Build Systems That Solve Real Business Problems",
+      "Turn Manual Processes Into Automated Systems",
+      "AI-Powered Solutions That Show Measurable ROI"
     ]
   },
   "social": {
@@ -33,7 +33,7 @@
     }
   },
   "contact": {
-    "availability": "Available for freelance projects and full-time opportunities",
+    "availability": "Available for custom business automation projects and full-time opportunities",
     "response_time": "Usually responds within 24 hours",
     "preferred_contact": "email",
     "timezone": "PST (UTC-8)"
@@ -49,14 +49,14 @@
       "location": "Remote",
       "duration": "2020 - Present",
       "type": "Freelance",
-      "description": "Developing custom web applications and solutions for clients across various industries, specializing in modern JavaScript frameworks and responsive design.",
+      "description": "Building custom business automation systems and AI-powered applications that solve specific industry problems, with focus on measurable ROI and operational efficiency.",
       "highlights": [
-        "Built 15+ custom web applications using React, Node.js, and various databases",
-        "Improved client website performance by average of 40% through optimization techniques",
-        "Implemented responsive designs that increased mobile user engagement by 60%",
-        "Collaborated with design teams to create pixel-perfect, accessible user interfaces"
+        "Created Business Intelligence Engine that automates opportunity discovery and client acquisition",
+        "Built AI-enhanced Real Estate CRM reducing administrative overhead by 60%",
+        "Developed workflow integration systems eliminating manual handoffs between design and deployment",
+        "Delivered AI-powered fitness platforms with scientific progress tracking and personalized recommendations"
       ],
-      "technologies": ["React", "Node.js", "JavaScript", "HTML5", "CSS3", "MongoDB", "PostgreSQL"]
+      "technologies": ["Python", "FastAPI", "React", "TypeScript", "PostgreSQL", "AI Integration", "Workflow Automation"]
     },
     {
       "title": "Web Developer",

@@ -56,8 +56,8 @@
       ]
     },
     "backend": {
-      "title": "Backend Development",
-      "description": "Server-side technologies and database management",
+      "title": "Business Logic & Data Systems",
+      "description": "Server-side systems that power business automation and intelligence",
       "skills": [
         {
           "name": "Node.js",
@@ -67,11 +67,18 @@
           "description": "Express.js, middleware, authentication, and API development"
         },
         {
+          "name": "FastAPI",
+          "proficiency": 88,
+          "years": 2,
+          "category": "framework",
+          "description": "High-performance API development for business intelligence systems and automation platforms"
+        },
+        {
           "name": "Python",
-          "proficiency": 85,
+          "proficiency": 90,
           "years": 4,
           "category": "programming",
-          "description": "Scientific computing, data analysis, PWA development, and automation scripts"
+          "description": "Business automation, AI integration, web scraping, and data processing systems"
         },
         {
           "name": "Express.js",
@@ -89,10 +96,10 @@
         },
         {
           "name": "PostgreSQL",
-          "proficiency": 75,
-          "years": 2,
+          "proficiency": 88,
+          "years": 3,
           "category": "database",
-          "description": "Relational design, complex queries, and performance optimization"
+          "description": "Complex business schema design (177+ field CRM systems), advanced queries, and performance optimization"
         },
         {
           "name": "RESTful APIs",
@@ -110,9 +117,50 @@
         }
       ]
     },
+    "ai_automation": {
+      "title": "AI & Business Automation",
+      "description": "Artificial intelligence integration and business process automation",
+      "skills": [
+        {
+          "name": "AI Integration",
+          "proficiency": 85,
+          "years": 2,
+          "category": "artificial_intelligence",
+          "description": "Google Gemini, OpenAI APIs, natural language processing for business intelligence"
+        },
+        {
+          "name": "Web Scraping",
+          "proficiency": 88,
+          "years": 3,
+          "category": "data_extraction",
+          "description": "Selenium, BeautifulSoup for automated business data collection and competitive analysis"
+        },
+        {
+          "name": "Workflow Automation",
+          "proficiency": 90,
+          "years": 3,
+          "category": "process_automation",
+          "description": "Celery task queues, Redis caching, automated business process optimization"
+        },
+        {
+          "name": "Email Processing",
+          "proficiency": 82,
+          "years": 2,
+          "category": "data_processing",
+          "description": "Automated email parsing, information extraction, and CRM integration"
+        },
+        {
+          "name": "API Orchestration",
+          "proficiency": 85,
+          "years": 3,
+          "category": "integration",
+          "description": "Multi-tool workflow integration (Figma, Replit, AI services) for business automation"
+        }
+      ]
+    },
     "tools": {
-      "title": "Tools & Technologies",
-      "description": "Development tools, deployment, and workflow optimization",
+      "title": "Development & Deployment",
+      "description": "Development tools, deployment, and infrastructure management",
       "skills": [
         {
           "name": "Git",
@@ -172,16 +220,30 @@
         }
       ]
     },
-    "soft_skills": {
-      "title": "Professional Skills",
-      "description": "Communication, leadership, and project management abilities",
+    "business_skills": {
+      "title": "Business & Problem-Solving Skills",
+      "description": "Business analysis, industry expertise, and strategic problem-solving",
       "skills": [
         {
-          "name": "Problem Solving",
+          "name": "Business Process Analysis",
+          "proficiency": 88,
+          "years": 3,
+          "category": "business_analysis",
+          "description": "Identifying operational inefficiencies and designing automation solutions for measurable ROI"
+        },
+        {
+          "name": "Industry Domain Expertise",
+          "proficiency": 85,
+          "years": 3,
+          "category": "domain_knowledge",
+          "description": "Deep understanding of real estate, fitness, and business development workflows"
+        },
+        {
+          "name": "Technical Problem Solving",
           "proficiency": 92,
           "years": 5,
           "category": "analytical",
-          "description": "Breaking down complex problems into manageable solutions"
+          "description": "Breaking down complex business problems into scalable technical solutions"
         },
         {
           "name": "Communication",
@@ -233,33 +295,33 @@
     }
   },
   "featured_skills": [
-    "JavaScript",
+    "Python",
+    "FastAPI", 
     "React",
-    "Node.js",
-    "CSS3",
-    "HTML5",
-    "Express.js",
-    "MongoDB",
-    "Git"
+    "TypeScript",
+    "PostgreSQL",
+    "AI Integration",
+    "Workflow Automation",
+    "Business Process Analysis"
   ],
   "learning_goals": [
     {
-      "skill": "Next.js",
-      "target_proficiency": 80,
+      "skill": "Advanced AI Model Integration",
+      "target_proficiency": 85,
       "timeline": "Q2 2025",
-      "reason": "Advanced React framework for production applications"
+      "reason": "Enhanced business intelligence and automation capabilities"
     },
     {
       "skill": "Kubernetes",
       "target_proficiency": 75,
       "timeline": "Q3 2025",
-      "reason": "Container orchestration for scalable deployments"
+      "reason": "Scalable deployment for enterprise business applications"
     },
     {
-      "skill": "Three.js",
-      "target_proficiency": 70,
+      "skill": "Advanced Data Analytics",
+      "target_proficiency": 80,
       "timeline": "Q4 2025",
-      "reason": "3D graphics for immersive web experiences"
+      "reason": "Deeper business insights and predictive analytics for client solutions"
     }
   ]
 }
