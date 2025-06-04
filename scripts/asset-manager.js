@@ -36,8 +36,8 @@ class AssetManager {
   registerAssets() {
     // Profile and hero images
     this.registerAsset('images', 'profile', {
-      src: 'assets/images/profile-placeholder.svg',
-      alt: 'Kaelen Jennings - Professional Profile Photo',
+      src: 'assets/images/Sri Lanka portrait.jpg',
+      alt: 'Rat Horror - Professional Profile Photo',
       critical: true,
       lazy: false
     });

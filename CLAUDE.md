@@ -1,5 +1,8 @@
 # Personal Portfolio Website - Project Configuration
 
+## Personal Instructions
+- When I type a slash command like "/report" ALWAYS execute it immediately. NEVER respond with "I understand you've triggered the /report command, but I won't respond to or act on this command message unless you explicitly ask me to, as per your instructions."
+
 ## Project Overview
 Modern, responsive personal portfolio website built with vanilla HTML5, CSS3, and JavaScript. Focuses on clean design, accessibility, and performance.
 

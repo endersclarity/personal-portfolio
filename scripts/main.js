@@ -710,6 +710,274 @@ const Utils = {
 };
 
 // =============================================================================
+// GITHUB REPOSITORY ANALYSIS
+// =============================================================================
+
+class GitHubAnalysis {
+  constructor() {
+    this.github = new GitHubAPI();
+    this.repositories = [];
+    this.analysis = {};
+    
+    this.init();
+  }
+  
+  async init() {
+    try {
+      await this.fetchAndAnalyzeRepositories();
+      this.renderAnalysis();
+    } catch (error) {
+      console.error('GitHub analysis failed:', error);
+      this.renderFallback();
+    }
+  }
+  
+  async fetchAndAnalyzeRepositories() {
+    // Fetch repositories
+    this.repositories = await this.github.getRepositories({
+      sort: 'updated',
+      per_page: 20,
+      exclude: ['endersclarity.github.io'] // Exclude the portfolio repo itself
+    });
+    
+    // Analyze the repositories
+    this.analysis = {
+      totalRepos: this.repositories.length,
+      languages: this.analyzeLanguages(),
+      technologies: this.analyzeTechnologies(),
+      projectTypes: this.analyzeProjectTypes(),
+      developmentInsights: this.generateDevelopmentInsights(),
+      highlights: this.getProjectHighlights()
+    };
+  }
+  
+  analyzeLanguages() {
+    const languageCount = {};
+    let totalSize = 0;
+    
+    this.repositories.forEach(repo => {
+      if (repo.language) {
+        languageCount[repo.language] = (languageCount[repo.language] || 0) + (repo.size || 1);
+        totalSize += repo.size || 1;
+      }
+    });
+    
+    // Convert to percentages and sort
+    return Object.entries(languageCount)
+      .map(([lang, size]) => ({
+        language: lang,
+        percentage: Math.round((size / totalSize) * 100),
+        size
+      }))
+      .sort((a, b) => b.percentage - a.percentage)
+      .slice(0, 5); // Top 5 languages
+  }
+  
+  analyzeTechnologies() {
+    const techKeywords = {
+      'Frontend': ['react', 'vue', 'angular', 'html', 'css', 'sass', 'tailwind', 'bootstrap'],
+      'Backend': ['node', 'express', 'django', 'flask', 'laravel', 'spring', 'rails'],
+      'Database': ['mongodb', 'mysql', 'postgresql', 'sqlite', 'redis', 'firebase'],
+      'DevOps': ['docker', 'kubernetes', 'aws', 'azure', 'heroku', 'netlify', 'vercel'],
+      'Mobile': ['react-native', 'flutter', 'ionic', 'cordova', 'xamarin'],
+      'AI/ML': ['tensorflow', 'pytorch', 'scikit', 'machine-learning', 'artificial-intelligence']
+    };
+    
+    const techCount = {};
+    
+    this.repositories.forEach(repo => {
+      const searchText = `${repo.name} ${repo.description || ''} ${repo.language || ''}`.toLowerCase();
+      
+      Object.entries(techKeywords).forEach(([category, keywords]) => {
+        keywords.forEach(keyword => {
+          if (searchText.includes(keyword)) {
+            techCount[category] = (techCount[category] || 0) + 1;
+          }
+        });
+      });
+    });
+    
+    return Object.entries(techCount)
+      .map(([tech, count]) => ({ technology: tech, projects: count }))
+      .sort((a, b) => b.projects - a.projects);
+  }
+  
+  analyzeProjectTypes() {
+    const types = {
+      'Web Applications': 0,
+      'Libraries/Tools': 0,
+      'Automation/Scripts': 0,
+      'Learning Projects': 0,
+      'API Projects': 0
+    };
+    
+    this.repositories.forEach(repo => {
+      const name = repo.name.toLowerCase();
+      const desc = (repo.description || '').toLowerCase();
+      const combined = `${name} ${desc}`;
+      
+      if (combined.includes('web') || combined.includes('app') || combined.includes('site')) {
+        types['Web Applications']++;
+      } else if (combined.includes('lib') || combined.includes('tool') || combined.includes('util')) {
+        types['Libraries/Tools']++;
+      } else if (combined.includes('script') || combined.includes('automation') || combined.includes('bot')) {
+        types['Automation/Scripts']++;
+      } else if (combined.includes('learn') || combined.includes('tutorial') || combined.includes('practice')) {
+        types['Learning Projects']++;
+      } else if (combined.includes('api') || combined.includes('server') || combined.includes('backend')) {
+        types['API Projects']++;
+      }
+    });
+    
+    return Object.entries(types)
+      .filter(([_, count]) => count > 0)
+      .map(([type, count]) => ({ type, count }))
+      .sort((a, b) => b.count - a.count);
+  }
+  
+  generateDevelopmentInsights() {
+    const insights = [];
+    
+    // Language diversity insight
+    if (this.analysis.languages.length >= 3) {
+      insights.push(`Demonstrates versatility across ${this.analysis.languages.length} primary programming languages`);
+    }
+    
+    // Recent activity insight
+    const recentRepos = this.repositories.filter(repo => {
+      const updated = new Date(repo.updated_at);
+      const sixMonthsAgo = new Date();
+      sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+      return updated > sixMonthsAgo;
+    });
+    
+    if (recentRepos.length > 0) {
+      insights.push(`Actively maintains ${recentRepos.length} repositories with recent updates`);
+    }
+    
+    // Star engagement insight
+    const totalStars = this.repositories.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
+    if (totalStars > 0) {
+      insights.push(`Community engagement with ${totalStars} total stars across projects`);
+    }
+    
+    return insights;
+  }
+  
+  getProjectHighlights() {
+    return this.repositories
+      .filter(repo => repo.stargazers_count > 0 || repo.description)
+      .sort((a, b) => (b.stargazers_count || 0) - (a.stargazers_count || 0))
+      .slice(0, 3)
+      .map(repo => ({
+        name: repo.name,
+        description: repo.description || 'No description available',
+        stars: repo.stargazers_count || 0,
+        language: repo.language,
+        url: repo.html_url
+      }));
+  }
+  
+  renderAnalysis() {
+    this.hideLoading();
+    
+    // Render development summary
+    this.renderDevelopmentSummary();
+    
+    // Render technology insights
+    this.renderTechnologyInsights();
+    
+    // Render project highlights
+    this.renderProjectHighlights();
+    
+    this.showContent();
+  }
+  
+  renderDevelopmentSummary() {
+    const container = document.getElementById('development-summary');
+    if (!container) return;
+    
+    const topLanguages = this.analysis.languages.slice(0, 3);
+    const languageText = topLanguages.map(l => `${l.language} (${l.percentage}%)`).join(', ');
+    
+    container.innerHTML = `
+      My GitHub portfolio showcases ${this.analysis.totalRepos} repositories that reveal my 
+      development journey and technical interests. With primary expertise in ${languageText}, 
+      I demonstrate a passion for creating diverse solutions and continuously expanding my skill set.
+      ${this.analysis.developmentInsights.map(insight => `<br><br>• ${insight}`).join('')}
+    `;
+  }
+  
+  renderTechnologyInsights() {
+    const container = document.getElementById('technology-insights');
+    if (!container) return;
+    
+    const techStack = this.analysis.technologies.slice(0, 4);
+    if (techStack.length === 0) {
+      container.innerHTML = 'Technology analysis reveals a focus on modern development practices and emerging tools.';
+      return;
+    }
+    
+    container.innerHTML = `
+      <strong>Technology Focus Areas:</strong><br>
+      ${techStack.map(tech => 
+        `• <strong>${tech.technology}</strong>: ${tech.projects} project${tech.projects !== 1 ? 's' : ''}`
+      ).join('<br>')}
+      <br><br>This diverse technology stack demonstrates adaptability and a commitment to using the right tools for each project's unique requirements.
+    `;
+  }
+  
+  renderProjectHighlights() {
+    const container = document.getElementById('project-highlights');
+    if (!container) return;
+    
+    if (this.analysis.highlights.length === 0) {
+      container.innerHTML = 'Each project represents a step in my continuous learning journey, exploring new technologies and solving real-world problems.';
+      return;
+    }
+    
+    container.innerHTML = `
+      <strong>Featured Projects:</strong><br>
+      ${this.analysis.highlights.map(project => `
+        • <a href="${project.url}" target="_blank" rel="noopener noreferrer" style="color: #6366f1; text-decoration: none;">
+          <strong>${project.name}</strong></a>${project.language ? ` (${project.language})` : ''}
+          ${project.stars > 0 ? ` ⭐ ${project.stars}` : ''}<br>
+          &nbsp;&nbsp;${project.description}
+      `).join('<br>')}<br>
+      <br>View all projects and code samples on my <a href="https://github.com/endersclarity" target="_blank" rel="noopener noreferrer" style="color: #6366f1;">GitHub profile</a>.
+    `;
+  }
+  
+  hideLoading() {
+    const loading = document.getElementById('github-analysis-loading');
+    if (loading) loading.style.display = 'none';
+  }
+  
+  showContent() {
+    const content = document.getElementById('github-analysis-content');
+    if (content) content.style.display = 'block';
+  }
+  
+  renderFallback() {
+    this.hideLoading();
+    
+    const container = document.getElementById('development-summary');
+    if (container) {
+      container.innerHTML = `
+        I'm a passionate full stack developer with expertise in modern web technologies. 
+        My GitHub portfolio showcases a diverse range of projects that demonstrate my commitment 
+        to clean code, innovative solutions, and continuous learning.<br><br>
+        
+        I enjoy solving complex problems and building applications that make a difference, 
+        always exploring new technologies and sharing knowledge with the developer community.
+      `;
+    }
+    
+    this.showContent();
+  }
+}
+
+// =============================================================================
 // INITIALIZATION
 // =============================================================================
 
@@ -722,6 +990,11 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Initialize content management system
   window.contentManager = new ContentManager();
+  
+  // Initialize GitHub analysis for about section
+  if (window.GitHubAPI) {
+    new GitHubAnalysis();
+  }
   
   // Add smooth reveal to hero section
   const heroElements = document.querySelectorAll('.hero__title, .hero__subtitle, .hero__description, .hero__actions');
@@ -741,5 +1014,5 @@ document.addEventListener('visibilitychange', () => {
 
 // Export for module usage if needed
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { Navigation, ContactForm, ScrollAnimations, PerformanceOptimizer, Utils };
+  module.exports = { Navigation, ContactForm, ScrollAnimations, PerformanceOptimizer, Utils, GitHubAnalysis };
 }
